@@ -1,3 +1,9 @@
+/*************************************************************
+*
+*         Setup
+...
+*/
+
 // Define methods of inducing fear
 enum Scares {
     jumpscare,
@@ -7,10 +13,17 @@ enum Scares {
     suspense
 }
 
-// Define weighting for each method
+// Define weighting for each method, say 0 to 100
+SetGlobalVarInt("jumpscare_weight",50);
+SetGlobalVarInt("one_monster_weight",50);
+SetGlobalVarInt("many_monsters_weight",50);
+SetGlobalVarInt("music_weight",50);
+SetGlobalVarInt("suspense_weight",50);
 
+/*************************************************************/
 
 // Example of setting current scare type to suspense
-SetLocalVarInt("global_scare_state", Scares::suspense);
+SetGlobalVarInt("global_scare_state", Scares::suspense);
 
-// Example of updating weighting of 
+// Example of updating weighting of suspense
+AddGlobalVarInt("suspense_weight",5);  // +5
