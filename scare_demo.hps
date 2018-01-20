@@ -7,21 +7,15 @@
 // Define methods of inducing fear
 enum Scares {
     jumpscare,
-    one_monster,
-    many_monsters,
-    music,
+    monsters,
     suspense,
-    visibility,
     insanity
 }
 
 // Define weighting for each method, say 0 to 100
 SetGlobalVarInt("jumpscare_weight",50);
-SetGlobalVarInt("one_monster_weight",50);
-SetGlobalVarInt("many_monsters_weight",50);
-SetGlobalVarInt("music_weight",50);
+SetGlobalVarInt("monsters_weight",50);
 SetGlobalVarInt("suspense_weight",50);
-SetGlobalVarInt("visibility_weight",50);
 SetGlobalVarInt("insanity_weight",50);
 
 /*************************************************************
@@ -30,12 +24,40 @@ SetGlobalVarInt("insanity_weight",50);
 *
 AddGlobalVarInt("suspense_weight",5);  // +5 suspense weighting
 SetGlobalVarInt("jumpscare_weight",30);  // jumpscare weight set to 30
-int rtn = GetGlobalVarInt("visibility_weight",40);  // get visibility weight
+int rtn = GetGlobalVarInt("monsters_weight",40);  // get visibility weight
 ...
+
+filename nametosaveas numberofpics numberofsecondsbetweenpics
 */
 
 /*************************************************************
 *
 *         Script
-...
+
+// play map 1
+// take neutral reading when reading first note/before opening door
+// take jumpscare reading after opening first door
+// take suspense reading after picking up key
+// take insanity reading after insanity event starts
+// take monsters reading after opening door to hallway
+// calculate differences from neutral, and weight accordingly
+
+// output weights to file
+file f;
+f.open("weights.txt", "w");
+string temp = string(itoa(jumpscare_weight)) + ";" + string(itoa(monsters_weight)) + ";" + string(itoa(suspense_weight)) + ";" + string(itoa(insanity_weight)) + ";";
+f.WriteString(temp);
+f.close();
+
+// play all other maps
+// check file for weights
+file f;
+f.open("weights.txt", "r");
+array<string> temp = split(f.readLine(),";")
+SetGlobalVarInt("jumpscare_weight",parseInt(temp[0]));
+SetGlobalVarInt("monsters_weight",parseInt(temp[1]));
+SetGlobalVarInt("suspense_weight",parseInt(temp[2]));
+SetGlobalVarInt("insanity_weight",parseInt(temp[3]));
+f.close();
+// display scares accordingly
 */
