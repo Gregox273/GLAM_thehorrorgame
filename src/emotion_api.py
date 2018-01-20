@@ -22,12 +22,12 @@ URL_GLOBAL_PARAMS = urllib.parse.urlencode({
 
 HTTPS_CONNECTION = 'westus.api.cognitive.microsoft.com'
 
-# Takes a url to an image and returns the scores for all faces
-# in the image, from left to right
+# Takes a url to an image and returns the scores for all faces in the image,
+# from left to right
 # @param filepath is a string- either an absolute URL or an
 #                 absolute filepath
-# @param is_url is True if you are analysing an image from the net,
-#               and False if you are analysing a local file
+# @param is_url is True if you are analysing an image from the net, and False if
+#               you are analysing a local file
 def analyse_picture(filepath, is_url):
 
     if is_url:
@@ -41,15 +41,17 @@ def analyse_picture(filepath, is_url):
         HEADERS = HEADERS_FILE
 
     try:
-        # NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-        #   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
-        #   URL below with "westcentralus".
+        # NOTE: You must use the same region in your REST call as you used to
+        # obtain your subscription keys.  For example, if you obtained your
+        # subscription keys from westcentralus, replace "westus" in the URL
+        # below with "westcentralus".
         conn = http.client.HTTPSConnection(HTTPS_CONNECTION)
         conn.request("POST", "/emotion/v1.0/recognize?%s" % URL_GLOBAL_PARAMS,
                 body, HEADERS)
         response = conn.getresponse()
         data = response.read()
-        # 'data' contains the JSON data. The following formats the JSON data for display.
+        # 'data' contains the JSON data. The following formats the JSON data for
+        # display.
         parsed = json.loads(data.decode())
 
         if 'error' in parsed:
@@ -69,11 +71,13 @@ def analyse_picture(filepath, is_url):
         print(parsed)
         print(e.args)
 
-# a basic function that converts the list of scores into a raw 'scared' value
-# and also returns a dictionary of the match for all the other emotions
+# A basic function that converts a face dictionary into a raw 'scared' value
+# which it returns, and also returns a dictionary of the match for all the other
+# emotions
 def how_scared(face):
     scores = face['scores']
 
+    # the weights we assign to each other emotion
     W_ANGER      = 0.0
     W_CONTEMPT   = 0.0
     W_DISGUST    = 0.0
@@ -82,8 +86,10 @@ def how_scared(face):
     W_NEUTRAL    = 0.0
     W_SADNESS    = 0.0
     W_SURPRISE   = 0.2
+    # some base value that we use to shift the scale
     BASE         = 0.0
 
+    # how scared we think the face in the picture is
     val = scores['anger']    * W_ANGER      +\
           scores['contempt'] * W_CONTEMPT   +\
           scores['disgust']  * W_DISGUST    +\
@@ -96,14 +102,14 @@ def how_scared(face):
 
     return(val, scores)
 
-data1 = analyse_picture('some_url',
-        is_url = True)
-data2 = analyse_picture('some_filepath', is_url = False)
+if __name__ == "__main__":
+    data1 = analyse_picture('some_url', is_url = True)
+    data2 = analyse_picture('some_filepath', is_url = False)
 
-print("\nData 1:")
-for obj in data1:
-    print (how_scared(obj))
+    print("\nData 1: (from URL)")
+    for obj in data1:
+        print (how_scared(obj))
 
-print("\nData 2:")
-for obj in data2:
-    print (how_scared(obj))
+    print("\nData 2: (from local path)")
+    for obj in data2:
+        print (how_scared(obj))
