@@ -5,7 +5,7 @@
             <Viewport CameraPosition="0 0 180" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="2" Preset="0" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
             <Viewport CameraPosition="180 0 0" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="0" Preset="1" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
             <Viewport CameraPosition="0 180 0" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="1" Preset="2" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
-            <Viewport CameraPosition="4.13656 6.66074 4.99133" CameraTarget="3.54329 -3.20143e-06 6.02654" CameraZoom="2" GridHeight="0" GridPlane="1" Preset="3" RenderMode="0" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
+            <Viewport CameraPosition="2.79918 3.89959 10.1606" CameraTarget="7.95989 -3.79748e-06 6.40734" CameraZoom="1.9" GridHeight="0" GridPlane="1" Preset="3" RenderMode="0" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
         </ViewportConfig>
         <Groups>
             <Group ID="0" Name="None" Visible="true" />
@@ -2515,7 +2515,7 @@
                         <Var Name="ConnectionLightUseSpec" Value="false" />
                     </UserVariables>
                 </Entity>
-                <Sound Active="false" Group="0" ID="668" MaxDistance="500" MinDistance="1" Name="bangsound" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../sounds/scare/scare_wall_stomp.snt" Tag="" UseDefault="false" Volume="5" WorldPos="8.25 4.25 -5.75" />
+                <Sound Active="false" Group="0" ID="668" MaxDistance="500" MinDistance="1" Name="bangsound" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../../../../../../../../../sounds/scare/scare_wall_stomp.snt" Tag="" UseDefault="false" Volume="5" WorldPos="8.25 4.25 -5.75" />
                 <Entity Active="true" FileIndex="39" Group="0" ID="688" Name="firstfloordoor" Rotation="0 12.5664 0" Scale="1 1 1" Tag="" WorldPos="-8 -3.92673 -15.75">
                     <UserVariables>
                         <Var Name="CastShadows" Value="true" />
@@ -2545,7 +2545,7 @@
                         <Var Name="IsAffectedByDecal" Value="true" />
                     </UserVariables>
                 </Entity>
-                <Sound Active="false" Group="0" ID="691" MaxDistance="500" MinDistance="1" Name="scaresound" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../sounds/react/react_pant.snt" Tag="" UseDefault="true" Volume="10" WorldPos="8 1.25 -5.75" />
+                <Sound Active="false" Group="0" ID="691" MaxDistance="500" MinDistance="1" Name="scaresound" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../../../../../../../../../sounds/react/react_pant.snt" Tag="" UseDefault="true" Volume="10" WorldPos="8 1.25 -5.75" />
                 <Entity Active="true" FileIndex="64" Group="0" ID="692" Name="sloped_square_shelf_2" Rotation="3.14159 1.5708 3.14159" Scale="1 1 1" Tag="" WorldPos="13.25 0 -6.5">
                     <UserVariables>
                         <Var Name="CastShadows" Value="true" />
@@ -2786,7 +2786,7 @@
                 </Area>
                 <BoxLight Active="true" BlendFunc="0" CastShadows="false" DiffuseColor="0.086 0.069 0.085 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="735" Name="BoxLight_1" Radius="1" Rotation="0 0 0" Scale="59 30 20" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="59 30 20" Tag="" WorldPos="0.75 1.5 -9" />
                 <BoxLight Active="true" BlendFunc="0" CastShadows="false" DiffuseColor="0.069 0.086 0.085 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="736" Name="BoxLight_2" Radius="1" Rotation="0 0 0" Scale="13.5 40 12" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="13.5 40 12" Tag="" WorldPos="-0.5 -3.75 6.25" />
-                <Sound Active="true" Group="0" ID="737" MaxDistance="500" MinDistance="1" Name="Sound_2" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../sounds/07/07_amb_breath.snt" Tag="" UseDefault="true" Volume="1" WorldPos="-0.25 1.25 5.75" />
+                <Sound Active="true" Group="0" ID="737" MaxDistance="500" MinDistance="1" Name="Sound_2" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../../../../../../../../../sounds/07/07_amb_breath.snt" Tag="" UseDefault="true" Volume="1" WorldPos="-0.25 1.25 5.75" />
                 <Entity Active="true" FileIndex="71" Group="0" ID="775" Name="block_box_1" Rotation="0 -1.5708 0" Scale="0.25 2.5 5.5" Tag="" WorldPos="8.75 2.75 9">
                     <UserVariables>
                         <Var Name="CastShadows" Value="true" />
@@ -2912,11 +2912,11 @@
                 <Area Active="true" AreaType="PathNode" Group="0" ID="838" Mesh="" Name="PathNodeArea_2" Rotation="0 0 0" Scale="0.5 0.5 0.5" Tag="" WorldPos="-8 0 -13.75">
                     <UserVariables />
                 </Area>
-                <Sound Active="true" Group="0" ID="839" MaxDistance="5" MinDistance="1" Name="Sound_1" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../07_amb_breath.snt" Tag="" UseDefault="true" Volume="1" WorldPos="-17.75 0 -2" />
-                <Entity Active="true" FileIndex="73" Group="0" ID="840" Name="servant_brute_1" Rotation="0 0.523601 0" Scale="1 1 1" Tag="" WorldPos="4.75 0 6">
+                <Sound Active="true" Group="0" ID="839" MaxDistance="5" MinDistance="1" Name="Sound_1" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../../../../../../../../../07_amb_breath.snt" Tag="" UseDefault="true" Volume="1" WorldPos="-17.75 0 -2" />
+                <Entity Active="true" FileIndex="73" Group="0" ID="840" Name="servant_brute_1" Rotation="3.14159 1.5708 3.14159" Scale="1.5 1.5 1.5" Tag="" WorldPos="4.75 0 6">
                     <UserVariables>
                         <Var Name="CallbackFunc" Value="" />
-                        <Var Name="DisableTriggers" Value="true" />
+                        <Var Name="DisableTriggers" Value="false" />
                         <Var Name="Hallucination" Value="true" />
                         <Var Name="HallucinationEndDist" Value="1.5" />
                     </UserVariables>
