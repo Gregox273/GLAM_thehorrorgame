@@ -22,7 +22,7 @@
  */
 int call_python_function(std::string program,
                          std::vector<std::string> args,
-                         std:: string python_version = "python")
+                         std:: string python_version = "python3")
 {
     std::string cmd = python_version + " " + program + ".py";
 

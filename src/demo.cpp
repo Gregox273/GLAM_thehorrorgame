@@ -5,8 +5,6 @@
 using namespace std;
 int main()
 {
-    call_python_function("temp/other", {"a", "b"});
+    call_python_function("emotion_api", {"test", "7", "1"});
 
-    vector<string> params({"c", "d"});
-    call_python_function("temp/other2", params, "python2.7");
 }
