@@ -1,0 +1,29 @@
+void OnEnter ()
+{
+		AddUseItemCallback("", "assistantkey", "assistantsdoor", "UsedKeyOnDoor", true);
+		AddEntityCollideCallback("Player", "InsanityArea_1", "OnAssistant", true, 1);
+		AddEntityCollideCallback("Player", "AssistantExit", "OnAssistantExit", true, 1);
+}
+//--------------------------------------------------------------------------------//
+void UsedKeyOnDoor(string &in asItem, string &in asEntity)
+{
+		SetSwingDoorLocked("assistantsdoor", false, true);
+		PlaySoundAtEntity("", "unlock_door.snt", "assistantsdoor", 0, false);
+		RemoveItem("assistantkey");
+}
+//--------------------------------------------------------------------------------//
+void OnAssistant(string &in asParent , string &in asChild , int alState)
+{
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+        GiveSanityDamage(40, true);
+		SetEntityActive("AssistantExit", true);
+}
+//--------------------------------------------------------------------------------//
+void OnAssistantExit(string &in asParent , string &in asChild , int alState)
+{
+		SetPlayerSanity(100);
+}
+//--------------------------------------------------------------------------------//
+void OnLeave ()
+{
+}
