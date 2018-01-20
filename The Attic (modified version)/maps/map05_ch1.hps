@@ -1,0 +1,20 @@
+void OnEnter ()
+{
+        AddEntityCollideCallback("Player", "chase_scene_area", "ChaseScene", true, 1);
+}
+//--------------------------------------------------------------------------------//
+void ChaseScene(string &in asParent , string &in asChild , int alState)
+ {
+        PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+		AddPropHealth("mansion_3", -100);
+		SetEntityActive("chase_scene", true);
+		ShowEnemyPlayerPosition("chase_scene");
+		SetMessage("Messages", "Run", 0);
+		GiveSanityDamage(5, true);
+		SetLampLit("bridge_torch_1", false, true);
+		SetLampLit("bridge_torch_2", false, true);
+}
+//--------------------------------------------------------------------------------//
+void OnLeave ()
+{
+}

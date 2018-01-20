@@ -1,0 +1,42 @@
+void onStart()
+{
+	AddTimer("T1", 2.0f, "Intro");
+	AddTimer("T2", 4.0f, "Intro");
+	AddTimer("T3", 6.0f, "Intro");
+	AddTimer("T4", 8.0f, "Intro");
+	AddTimer("T5", 10.0f, "Intro");
+	SetPlayerCrouching(true);
+	SetPlayerActive(false);
+}
+
+void Intro(string &in asTimer)
+{
+	string x = asTimer;
+	if (x == "T1")
+	{
+		PlaySoundAtEntity("", "react_sigh.snt", "Player", 0, false);
+		FadeOut(3);
+	} 
+	else if (x == "T2") 
+	{
+		FadeIn(3);
+		PlaySoundAtEntity("", "react_breath.snt", "Player", 0, false);
+		StartPlayerLookAt("ScriptArea_1", 2, 2, ""); 
+	}
+	else if (x == "T3")
+	{
+		StopPlayerLookAt();
+		StartPlayerLookAt("ScriptArea_2", 2, 2, "");
+	}
+	else if (x == "T4") 
+	{
+		PlaySoundAtEntity("", "react_breath_slow.snt", "Player", 0, false);
+		StopPlayerLookAt();
+	}
+	else if (x == "T5")
+	{
+		SetPlayerCrouching(false);
+		SetPlayerActive(true);
+		SetMessage("chapters", "epo", 0);
+	}
+}

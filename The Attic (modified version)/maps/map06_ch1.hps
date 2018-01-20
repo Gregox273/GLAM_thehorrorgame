@@ -1,0 +1,72 @@
+void OnEnter ()
+{
+        AddEntityCollideCallback("Player", "flying_body_area", "FlyingBody1", true, 1);
+		AddEntityCollideCallback("Player", "ClosetBody", "ClosetBody1", true, 1);
+		AddEntityCollideCallback("Player", "walkPast1", "WalkPast1", true, 1);
+		AddEntityCollideCallback("Player", "flying_dead_guy_area2", "FlyingBody2", true, 1);
+		AddUseItemCallback("", "key_firstfloor", "firstfloordoor", "UsedKeyOnDoor", true);
+		SetEntityCallbackFunc("key_firstfloor", "OnPickup");
+		AddEntityCollideCallback("Player", "closet_monster_area", "ClosetMonster", true, 1);
+}
+//--------------------------------------------------------------------------------//
+void FlyingBody1(string &in asParent , string &in asChild , int alState)
+{
+		SetEntityActive("flying_dead_guy_1", true);
+		AddPropImpulse("flying_dead_guy_1", 0, 0, 40, "");
+		GiveSanityDamage(5, true);
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+		PlaySoundAtEntity("", "break_glass_bottle", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void ClosetBody1(string &in asParent , string &in asChild , int alState)
+{
+		SetEntityActive("corpse_male_1", true);
+		GiveSanityDamage(5, true);
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void WalkPast1(string &in asParent , string &in asChild , int alState)
+{
+		AddPropHealth("mansion_door_5", -100);
+		AddPropHealth("mansion_door_4", -100);
+		SetEntityActive("balcony_enemy", true);
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+		AddEnemyPatrolNode("balcony_enemy", "PathNodeArea_1", 0, "");
+		AddEnemyPatrolNode("balcony_enemy", "PathNodeArea_2", 0, "");
+		SetMessage("Messages", "PathOpen", 0);
+}
+//--------------------------------------------------------------------------------//
+void FlyingBody2(string &in asParent , string &in asChild , int alState)
+{
+		AddPropImpulse("flying_dead_guy_2", 0, 0, 40, "");
+		SetEntityActive("flying_dead_guy_2", true);
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+		StartPlayerLookAt("ScaryWindow", 2, 2, "");
+}
+//--------------------------------------------------------------------------------//
+void UsedKeyOnDoor(string &in asItem, string &in asEntity)
+{
+		SetLevelDoorLocked("firstfloordoor", false);
+		SetLevelDoorLockedSound("firstfloordoor", "door_level_wood_locked.snt");
+		RemoveItem("key_firstfloor");
+}
+//--------------------------------------------------------------------------------//
+void OnPickup(string &in asEntity, string &in type)
+{
+		AddPropHealth("mansion_door_2", -100);
+		SetEntityActive("servant_grunt_1", true);
+		AddEnemyPatrolNode("servant_grunt_1", "PathNodeArea_3", 0, "");
+		AddEnemyPatrolNode("servant_grunt_1", "PathNodeArea_4", 0, "");
+		AddEnemyPatrolNode("servant_grunt_1", "PathNodeArea_5", 0, "");	
+}
+//--------------------------------------------------------------------------------//
+void ClosetMonster(string &in asParent , string &in asChild , int alState)
+{
+		SetEntityActive("closet_monster", true);
+		ShowEnemyPlayerPosition("closet_monster");
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void OnLeave ()
+{
+}

@@ -1,0 +1,101 @@
+void OnEnter ()
+{
+		AddEntityCollideCallback("Player", "ScriptArea_1", "FirstScriptArea", true, 1);
+		AddEntityCollideCallback("Player", "ScriptArea_2", "SecondScriptArea", true, 1);
+		AddEntityCollideCallback("Player", "ScriptArea_3", "ThirdScriptArea", true, 1);
+		AddEntityCollideCallback("Player", "ScriptArea_4", "LastScriptArea", true, 1);
+		AddEntityCollideCallback("Player", "monster_area", "BossFight", true, 1);
+		AddEntityCollideCallback("Player", "ScriptArea_5", "VaultHint", true, 1);
+		AddUseItemCallback("", "key_basement", "final_door", "UsedKeyOnDoor", true);
+		AddUseItemCallback("", "secret_key", "secret_door", "UsedKeyOnDoor2", true);
+}
+void VaultHint(string &in asParent, string &in asChild, int alState)
+{
+		SetMessage("Messages", "VaultHint", 0);
+}
+void UsedKeyOnDoor(string &in asItem, string &in asEntity)
+{
+		SetSwingDoorLocked("final_door", false, true);
+		PlaySoundAtEntity("", "unlock_door", "final_door", 0, false);
+		RemoveItem("key_basement");
+}
+void UsedKeyOnDoor2(string &in asItem, string &in asEntity)
+{
+		SetSwingDoorLocked("secret_door", false, true);
+		PlaySoundAtEntity("", "unlock_door", "secret_door", 0, false);
+		RemoveItem("secret_key");
+}
+void FirstScriptArea(string &in asParent, string &in asChild, int alState)
+{
+		SetMessage("Messages", "DerrekMother", 0);
+		SetPlayerMoveSpeedMul(0.5f);
+		SetPlayerJumpDisabled(true);
+		SetPlayerCrouchDisabled(true);
+		PlayMusic("EndFile1.ogg", false, 20, 0, 0, true);
+}
+void SecondScriptArea(string &in asParent, string &in asChild, int alState)
+{
+		StartEffectFlash(0.1f, 1.0f, 0.1f);
+		SetEntityActive("ScriptArea_4", true);
+		SetEntityActive("armour_nice_complete_4", true);
+		SetEntityActive("armour_nice_complete_5", true);
+		SetEntityActive("armour_nice_complete_6", true);
+		SetEntityActive("armour_nice_complete_3", false);
+		SetEntityActive("armour_nice_complete_1", false);
+		SetEntityActive("armour_nice_complete_2", false);
+}
+void ThirdScriptArea(string &in asParent, string &in asChild, int alState)
+{
+		AddPropHealth("final_door", -100);
+		PlaySoundAtEntity("", "lurker_hit_Wood", "Player", 0, false);
+        AddPlayerBodyForce(-55000, 25000, 0, false);
+        FadePlayerRollTo(75, 5, 2);
+        StartPlayerLookAt("display_1", 10, 10, "");
+        SetPlayerCrouching(true);
+        GivePlayerDamage(10, "BloodSplat", false, false);
+        PlaySoundAtEntity("", "player_bodyfall", "Player", 0, false);
+		SetMessage("Messages", "DerrekMother2", 0);
+}
+void LastScriptArea(string &in asParent, string &in asChild, int alState)
+{
+        FadePlayerRollTo(75, 5, 2);
+        StartPlayerLookAt("display_1", 10, 10, "");
+        SetPlayerCrouching(true);
+		PlayMusic("EndFile2.ogg", false, 20, 0, 0, true);
+		FadeOut(5);
+		AddTimer("", 6, "CreditsTimer");
+}
+void CreditsTimer(string &in asTimer)
+{
+		StartCredits("THEATTICSONG.ogg" , true , "Endcredits" , "Credittext" , 1);
+}
+void BossFight(string &in asParent, string &in asChild, int alState)
+{
+		SetEntityActive("basement_monster", true);
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_8", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_9", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_10", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_11", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_12", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_13", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_14", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_15", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_16", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_17", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_18", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_19", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_20", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_21", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_22", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_23", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_24", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_25", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_26", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_27", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_28", 0, "");
+		AddEnemyPatrolNode("basement_monster1", "PathNodeArea_29", 0, "");
+}
+void OnLeave ()
+{
+
+}

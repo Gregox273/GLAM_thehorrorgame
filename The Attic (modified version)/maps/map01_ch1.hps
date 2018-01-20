@@ -1,0 +1,36 @@
+void OnEnter ()
+{
+AddUseItemCallback("", "keyone", "door1", "UsedKeyOnDoor", true);
+AddUseItemCallback("", "key_attic", "stairwell", "UsedKeyOnDoor2", true);
+SetEntityCallbackFunc("key_attic", "Func");
+}
+//--------------------------------------------------------------------------------//
+void UsedKeyOnDoor(string &in asItem, string &in asEntity)
+{
+SetSwingDoorLocked("door1", false, true);
+PlaySoundAtEntity("", "unlock_door.snt", "door1", 0, false);
+RemoveItem("keyone");
+}
+//--------------------------------------------------------------------------------//
+void UsedKeyOnDoor2(string &in asItem, string &in asEntity)
+{
+SetLevelDoorLocked("stairwell", false);
+SetLevelDoorLockedSound("stairwell", "door_level_wood_locked.snt");
+RemoveItem("key_attic");
+}
+//--------------------------------------------------------------------------------//
+void Func(string &in asEntity, string &in type)
+{
+if(type == "OnPickup")
+{
+PlaySoundAtEntity("", "16_bridge_stuck.snt", "Player", 0, false);
+PlaySoundAtEntity("", "react_pant.snt", "Player", 0, false);
+StartPlayerLookAt("Player", 3.0f, 3.0f, "");
+AddTimer("atticscare", 1, "OnPickup");
+SetMessage("Messages", "scare", 0);
+}
+}
+//--------------------------------------------------------------------------------//
+void OnLeave ()
+{
+}
