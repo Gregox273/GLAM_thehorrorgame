@@ -3,6 +3,12 @@ void OnEnter ()
 AddUseItemCallback("", "keyone", "door1", "UsedKeyOnDoor", true);
 AddUseItemCallback("", "key_attic", "stairwell", "UsedKeyOnDoor2", true);
 SetEntityCallbackFunc("key_attic", "Func");
+
+AddEntityCollideCallback("Player", "mansion_1_jump", "boo", true, 1);
+}
+//--------------------------------------------------------------------------------//
+void boo(){
+    setEntityActive("servant_brute_1", true);
 }
 //--------------------------------------------------------------------------------//
 void UsedKeyOnDoor(string &in asItem, string &in asEntity)
@@ -10,6 +16,14 @@ void UsedKeyOnDoor(string &in asItem, string &in asEntity)
 SetSwingDoorLocked("door1", false, true);
 PlaySoundAtEntity("", "unlock_door.snt", "door1", 0, false);
 RemoveItem("keyone");
+
+AddEnemyPatrolNode("servant_grunt_1", "PathNodeArea_1", 3.0f,"");
+AddEnemyPatrolNode("servant_grunt_2", "PathNodeArea_1", 2.0f,"");
+AddEnemyPatrolNode("servant_grunt_3", "PathNodeArea_1", 2.5f,"");
+
+AddEnemyPatrolNode("servant_grunt_1", "PathNodeArea_2", 0.01f,"");
+AddEnemyPatrolNode("servant_grunt_2", "PathNodeArea_2", 0.01f,"");
+AddEnemyPatrolNode("servant_grunt_3", "PathNodeArea_2", 0.01f,"");
 }
 //--------------------------------------------------------------------------------//
 void UsedKeyOnDoor2(string &in asItem, string &in asEntity)
@@ -30,6 +44,26 @@ AddTimer("atticscare", 1, "OnPickup");
 SetMessage("Messages", "scare", 0);
 }
 }
+//--------------------------------------------------------------------------------//
+void key_1_callback(string &in asEntity, string &in type)
+{
+    if(type == "OnPickup")
+    {
+        SetLampLit("candlestick_floor_3",false,true);
+        SetLampLit("chandelier_nice_4",false,true);
+        SetLampLit("chandelier_nice_3",false,true);
+        SetLampLit("candlestick_floor_2",false,true);
+        SetLampLit("candle_floor_small_2",false,true);
+        SetLampLit("candle_floor_small_1",false,true);
+        SetLampLit("candlestick01_1",false,true);
+        SetLampLit("chandelier_nice_2",false,true);
+        SetLampLit("candlestick_wall_1",false,true);
+        SetLampLit("chandelier_nice_1",false,true);
+        SetLampLit("candlestick_wall_4",false,true);
+    }
+}
+//--------------------------------------------------------------------------------//
+mansion_1_jump
 //--------------------------------------------------------------------------------//
 void OnLeave ()
 {
