@@ -1,0 +1,16 @@
+// Define methods of inducing fear
+enum Scares {
+    jumpscare,
+    one_monster,
+    many_monsters,
+    music,
+    suspense
+}
+
+// Define weighting for each method
+
+
+// Example of setting current scare type to suspense
+SetLocalVarInt("global_scare_state", Scares::suspense);
+
+// Example of updating weighting of 
