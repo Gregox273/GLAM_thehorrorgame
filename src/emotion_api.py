@@ -6,10 +6,15 @@ import json
 import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
 
 # Global parameters, use your own key for subscription
-HEADERS = {
-    # Request headers. Replace the placeholder key below with your subscription key.
+MY_SUBSCRIPTION_KEY = None
+
+HEADERS_URL = {
     'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': 'demo',
+    'Ocp-Apim-Subscription-Key': MY_SUBSCRIPTION_KEY
+}
+HEADERS_FILE = {
+    'Content-Type': 'application/octet-stream',
+    'Ocp-Apim-Subscription-Key': MY_SUBSCRIPTION_KEY
 }
 
 URL_GLOBAL_PARAMS = urllib.parse.urlencode({
@@ -17,15 +22,23 @@ URL_GLOBAL_PARAMS = urllib.parse.urlencode({
 
 HTTPS_CONNECTION = 'westus.api.cognitive.microsoft.com'
 
-# takes a url to an image and returns the scores for all faces
+# Takes a url to an image and returns the scores for all faces
 # in the image, from left to right
-def analyse_picture(filepath, url = True):
+# @param filepath is a string- either an absolute URL or an
+#                 absolute filepath
+# @param is_url is True if you are analysing an image from the net,
+#               and False if you are analysing a local file
+def analyse_picture(filepath, is_url):
 
-    if url:
+    if is_url:
         # Replace the example URL below with the URL of the image you want to analyze.
         body = "{ 'url': '" + filepath + "' }"
+        HEADERS = HEADERS_URL
     else:
-        body = "{ 'location': '"
+        fin = open(filepath, 'rb')
+        body = fin.read()
+        fin.close()
+        HEADERS = HEADERS_FILE
 
     try:
         # NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
@@ -41,7 +54,7 @@ def analyse_picture(filepath, url = True):
 
         if 'error' in parsed:
             print("Data has an error")
-            raise Exception('JSON data has been read incorrectly')
+            raise Exception(parsed['error'])
         elif 'statusCode' in parsed:
             print("Data has a status code")
             raise Exception(parsed['message'])
@@ -51,10 +64,13 @@ def analyse_picture(filepath, url = True):
             return parsed
 
     except Exception as e:
+        print("Caught exeption")
+        print(data)
+        print(parsed)
         print(e.args)
 
-# a basic function that converts the list of scores into a raw
-# 'scared' value
+# a basic function that converts the list of scores into a raw 'scared' value
+# and also returns a dictionary of the match for all the other emotions
 def how_scared(face):
     scores = face['scores']
 
@@ -78,9 +94,16 @@ def how_scared(face):
           scores['surprise'] * W_SURPRISE   +\
           BASE
 
-    return(val)
+    return(val, scores)
 
-data = analyse_picture(demo)
+data1 = analyse_picture('some_url',
+        is_url = True)
+data2 = analyse_picture('some_filepath', is_url = False)
 
-for obj in data:
+print("\nData 1:")
+for obj in data1:
+    print (how_scared(obj))
+
+print("\nData 2:")
+for obj in data2:
     print (how_scared(obj))
