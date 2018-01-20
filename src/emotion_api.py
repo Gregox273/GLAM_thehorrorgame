@@ -3,10 +3,16 @@
 # each face is from left to right
 
 import json
+import time
+import numpy as np
+import cv2
+import argparse
+import sys
 import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
+from multiprocessing import Pool
 
 # Global parameters, use your own key for subscription
-MY_SUBSCRIPTION_KEY = None
+MY_SUBSCRIPTION_KEY = 'dcc462c0b3704713a8e48e9ca074f247'
 
 HEADERS_URL = {
     'Content-Type': 'application/json',
@@ -74,7 +80,7 @@ def analyse_picture(filepath, is_url):
             print("Data has a status code")
             raise Exception(parsed['message'])
         else:
-            parsed = sorted(parsed, key = lambda k: get_face_area(k))
+            parsed = sorted(parsed, key = lambda k: get_face_area(k), reverse = True)
             conn.close()
             return parsed
 
@@ -93,12 +99,12 @@ def how_scared(face):
     # the weights we assign to each other emotion
     W_ANGER      = 0.0
     W_CONTEMPT   = 0.0
-    W_DISGUST    = 0.0
-    W_FEAR       = 0.8
+    W_DISGUST    = 200.0
+    W_FEAR       = 800.0
     W_HAPPINESS  = 0.0
     W_NEUTRAL    = 0.0
-    W_SADNESS    = 0.0
-    W_SURPRISE   = 0.2
+    W_SADNESS    = 200.0
+    W_SURPRISE   = 200.0
     # some base value that we use to shift the scale
     BASE         = 0.0
 
@@ -120,7 +126,6 @@ def output_scared(face, filepath):
 
     with open(filepath, 'w') as fout:
         val = how_scared(face)
-        fout.write('scared: ')
         fout.write(str(val) + '\n')
 
         scores = face['scores']
@@ -128,10 +133,48 @@ def output_scared(face, filepath):
             fout.write(emotion + ': ')
             fout.write(str(scores[emotion]) + '\n')
 
-if __name__ == "__main__":
-    data1 = analyse_picture('some_url.jpg',
-            is_url = True)
-    data2 = analyse_picture('/some/absolute/path.jpg', is_url = False)
+# take a picture using the camera
+def take_picture(pic_name):
+    # initialise camera
+    cap = cv2.VideoCapture(0)
+    # capture
+    _, image = cap.read()
 
-    output_scared(data1[0], "0.out")
-    output_scared(data2[0], "1.out")
+    # Display the resulting frame
+    cv2.imwrite(pic_name, image)
+
+    # When everything done, release the capture
+    cap.release()
+    cv2.destroyAllWindows()
+
+# analyses picture pic_name and outputs the emotional data into
+# out_name
+def analyse_and_output(pic_name, out_name):
+    data = analyse_picture(pic_name, is_url = False)
+    output_scared(data[0], out_name)
+
+if __name__ == "__main__":
+
+    if len(sys.argv) < 4:
+        raise Exception("No filename specified")
+
+    filename = sys.argv[1]
+    no_of_pics = int(sys.argv[2])
+    pic_interval = int(sys.argv[3])
+
+    pool = Pool()
+    #take no of photos with desired time intervals
+    for i in range (no_of_pics):
+        pic_name = filename + '_' + str(i) + '.png'
+        take_picture(pic_name)
+        print('photo ' + str(i) + ' taken')
+        time.sleep(pic_interval)
+
+        out_name = filename + '_' + str(i) + '.out'
+        pool.apply_async(analyse_and_output, [pic_name, out_name])
+
+    pool.close()
+    pool.join()
+
+
+
