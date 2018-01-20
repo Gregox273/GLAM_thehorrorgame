@@ -99,11 +99,11 @@ def how_scared(face):
     # the weights we assign to each other emotion
     W_ANGER      = 0.0
     W_CONTEMPT   = 0.0
-    W_DISGUST    = 0.0
+    W_DISGUST    = 200.0
     W_FEAR       = 800.0
     W_HAPPINESS  = 0.0
     W_NEUTRAL    = 0.0
-    W_SADNESS    = 0.0
+    W_SADNESS    = 200.0
     W_SURPRISE   = 200.0
     # some base value that we use to shift the scale
     BASE         = 0.0
