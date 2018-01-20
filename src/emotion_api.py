@@ -3,10 +3,12 @@
 # each face is from left to right
 
 import json
+import numpy as np
+import cv2
 import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
 
 # Global parameters, use your own key for subscription
-MY_SUBSCRIPTION_KEY = None
+MY_SUBSCRIPTION_KEY = insert your own key here
 
 HEADERS_URL = {
     'Content-Type': 'application/json',
@@ -74,7 +76,7 @@ def analyse_picture(filepath, is_url):
             print("Data has a status code")
             raise Exception(parsed['message'])
         else:
-            parsed = sorted(parsed, key = lambda k: get_face_area(k))
+            parsed = sorted(parsed, key = lambda k: get_face_area(k), reverse = True)
             conn.close()
             return parsed
 
@@ -129,9 +131,20 @@ def output_scared(face, filepath):
             fout.write(str(scores[emotion]) + '\n')
 
 if __name__ == "__main__":
-    data1 = analyse_picture('some_url.jpg',
-            is_url = True)
-    data2 = analyse_picture('/some/absolute/path.jpg', is_url = False)
+    #initialise camera 
+    cap = cv2.VideoCapture(0)
 
-    output_scared(data1[0], "0.out")
-    output_scared(data2[0], "1.out")
+    #capture
+    _,image = cap.read()
+    print('photo taken')
+    
+    # Display the resulting frame
+    cv2.imwrite('picworks.png', image)
+
+    # When everything done, release the capture
+    cap.release()
+    cv2.destroyAllWindows()
+    #analyse data
+    data = analyse_picture('picworks.png', is_url = False)   
+
+    output_scared(data[0], "picworks.out")
