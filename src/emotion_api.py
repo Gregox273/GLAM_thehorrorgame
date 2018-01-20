@@ -3,6 +3,7 @@
 # each face is from left to right
 
 import json
+import time
 import numpy as np
 import cv2
 import argparse
@@ -10,7 +11,7 @@ import sys
 import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
 
 # Global parameters, use your own key for subscription
-MY_SUBSCRIPTION_KEY = None
+MY_SUBSCRIPTION_KEY = 'dcc462c0b3704713a8e48e9ca074f247'
 
 HEADERS_URL = {
     'Content-Type': 'application/json',
@@ -98,11 +99,11 @@ def how_scared(face):
     W_ANGER      = 0.0
     W_CONTEMPT   = 0.0
     W_DISGUST    = 0.0
-    W_FEAR       = 0.8
+    W_FEAR       = 800.0
     W_HAPPINESS  = 0.0
     W_NEUTRAL    = 0.0
     W_SADNESS    = 0.0
-    W_SURPRISE   = 0.2
+    W_SURPRISE   = 200.0
     # some base value that we use to shift the scale
     BASE         = 0.0
 
@@ -124,7 +125,6 @@ def output_scared(face, filepath):
 
     with open(filepath, 'w') as fout:
         val = how_scared(face)
-        fout.write('scared: ')
         fout.write(str(val) + '\n')
 
         scores = face['scores']
@@ -139,8 +139,6 @@ def take_picture(pic_name):
     # capture
     _, image = cap.read()
 
-    print('photo taken')
-
     # Display the resulting frame
     cv2.imwrite(pic_name, image)
 
@@ -150,13 +148,27 @@ def take_picture(pic_name):
 
 if __name__ == "__main__":
 
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 4:
         raise Exception("No filename specified")
 
     filename = sys.argv[1]
-    pic_name = filename + '.png'
+    no_of_pics = int(sys.argv[2])
+    pic_interval = int(sys.argv[3])
+    
+    #take no of photos with desired time intervals
+    for i in range (no_of_pics):
+        pic_name = filename + '_' + str(i) + '.png'
+        take_picture(pic_name)
+        time.sleep(pic_interval)
+        print('photo ' + str(i) + ' taken')
+    
+    #analyse photo after all photos taken    
+    for j in range (no_of_pics):
+        pic_name = filename +'_' + str(j) + '.png'
+        data = analyse_picture(pic_name, is_url = False)
+        output_scared(data[0], filename + '_' + str(j) + '.out')
 
-    take_picture(pic_name)
-    data = analyse_picture(pic_name, is_url = False)
 
-    output_scared(data[0], filename + '.out')
+
+
+
