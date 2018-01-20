@@ -5,10 +5,12 @@
 import json
 import numpy as np
 import cv2
+import argparse
+import sys
 import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
 
 # Global parameters, use your own key for subscription
-MY_SUBSCRIPTION_KEY = insert your own key here
+MY_SUBSCRIPTION_KEY = None
 
 HEADERS_URL = {
     'Content-Type': 'application/json',
@@ -130,21 +132,31 @@ def output_scared(face, filepath):
             fout.write(emotion + ': ')
             fout.write(str(scores[emotion]) + '\n')
 
-if __name__ == "__main__":
-    #initialise camera 
+# take a picture using the camera
+def take_picture(pic_name):
+    # initialise camera
     cap = cv2.VideoCapture(0)
+    # capture
+    _, image = cap.read()
 
-    #capture
-    _,image = cap.read()
     print('photo taken')
-    
+
     # Display the resulting frame
-    cv2.imwrite('picworks.png', image)
+    cv2.imwrite(pic_name, image)
 
     # When everything done, release the capture
     cap.release()
     cv2.destroyAllWindows()
-    #analyse data
-    data = analyse_picture('picworks.png', is_url = False)   
 
-    output_scared(data[0], "picworks.out")
+if __name__ == "__main__":
+
+    if len(sys.argv) < 2:
+        raise Exception("No filename specified")
+
+    filename = sys.argv[1]
+    pic_name = filename + '.png'
+
+    take_picture(pic_name)
+    data = analyse_picture(pic_name, is_url = False)
+
+    output_scared(data[0], filename + '.out')
