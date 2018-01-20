@@ -22,8 +22,21 @@ URL_GLOBAL_PARAMS = urllib.parse.urlencode({
 
 HTTPS_CONNECTION = 'westus.api.cognitive.microsoft.com'
 
+# This takes a filepath to a picture (.jpg/.png/whatever) and then converts that
+# filepath to a different extension keeping the entire file structure the same
+# `ext` is the extension we are going to add instead
+def get_out_filename(filepath, ext):
+    posn = filepath.rfind('.')
+    new_path = filepath[:posn]
+    return (new_path + ext)
+
+# gets area of a face
+def get_face_area(face):
+    return (face['faceRectangle']['width'] *\
+            face['faceRectangle']['height'])
+
 # Takes a url to an image and returns the scores for all faces in the image,
-# from left to right
+# from the biggest face to the smallest face
 # @param filepath is a string- either an absolute URL or an
 #                 absolute filepath
 # @param is_url is True if you are analysing an image from the net, and False if
@@ -61,7 +74,7 @@ def analyse_picture(filepath, is_url):
             print("Data has a status code")
             raise Exception(parsed['message'])
         else:
-            parsed = sorted(parsed, key = lambda k: k['faceRectangle']['left'])
+            parsed = sorted(parsed, key = lambda k: get_face_area(k))
             conn.close()
             return parsed
 
@@ -100,16 +113,25 @@ def how_scared(face):
           scores['surprise'] * W_SURPRISE   +\
           BASE
 
-    return(val, scores)
+    return(val)
+
+# writes the 'fear of a face' to a file
+def output_scared(face, filepath):
+
+    with open(filepath, 'w') as fout:
+        val = how_scared(face)
+        fout.write('scared: ')
+        fout.write(str(val) + '\n')
+
+        scores = face['scores']
+        for emotion in scores:
+            fout.write(emotion + ': ')
+            fout.write(str(scores[emotion]) + '\n')
 
 if __name__ == "__main__":
-    data1 = analyse_picture('some_url', is_url = True)
-    data2 = analyse_picture('some_filepath', is_url = False)
+    data1 = analyse_picture('some_url.jpg',
+            is_url = True)
+    data2 = analyse_picture('/some/absolute/path.jpg', is_url = False)
 
-    print("\nData 1: (from URL)")
-    for obj in data1:
-        print (how_scared(obj))
-
-    print("\nData 2: (from local path)")
-    for obj in data2:
-        print (how_scared(obj))
+    output_scared(data1[0], "0.out")
+    output_scared(data2[0], "1.out")
