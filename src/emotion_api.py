@@ -9,9 +9,10 @@ import cv2
 import argparse
 import sys
 import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
+from multiprocessing import Pool
 
 # Global parameters, use your own key for subscription
-MY_SUBSCRIPTION_KEY = 'dcc462c0b3704713a8e48e9ca074f247'
+MY_SUBSCRIPTION_KEY = None
 
 HEADERS_URL = {
     'Content-Type': 'application/json',
@@ -146,6 +147,12 @@ def take_picture(pic_name):
     cap.release()
     cv2.destroyAllWindows()
 
+# analyses picture pic_name and outputs the emotional data into
+# out_name
+def analyse_and_output(pic_name, out_name):
+    data = analyse_picture(pic_name, is_url = False)
+    output_scared(data[0], out_name)
+
 if __name__ == "__main__":
 
     if len(sys.argv) < 4:
@@ -154,21 +161,20 @@ if __name__ == "__main__":
     filename = sys.argv[1]
     no_of_pics = int(sys.argv[2])
     pic_interval = int(sys.argv[3])
-    
+
+    pool = Pool()
     #take no of photos with desired time intervals
     for i in range (no_of_pics):
         pic_name = filename + '_' + str(i) + '.png'
         take_picture(pic_name)
         time.sleep(pic_interval)
         print('photo ' + str(i) + ' taken')
-    
-    #analyse photo after all photos taken    
-    for j in range (no_of_pics):
-        pic_name = filename +'_' + str(j) + '.png'
-        data = analyse_picture(pic_name, is_url = False)
-        output_scared(data[0], filename + '_' + str(j) + '.out')
 
+        out_name = filename + '_' + str(i) + '.out'
+        pool.apply_async(analyse_and_output, [pic_name, out_name])
 
+    pool.close()
+    pool.join()
 
 
 
