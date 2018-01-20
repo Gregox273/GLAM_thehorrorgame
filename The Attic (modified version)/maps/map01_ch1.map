@@ -5,13 +5,13 @@
             <Viewport CameraPosition="0 0 180" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="2" Preset="0" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
             <Viewport CameraPosition="180 0 0" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="0" Preset="1" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
             <Viewport CameraPosition="0 180 0" CameraTarget="0 0 0" CameraZoom="0" GridHeight="0" GridPlane="1" Preset="2" RenderMode="1" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
-            <Viewport CameraPosition="-0.809319 10.2692 13.2768" CameraTarget="-3.67952 3.53307e-06 4.79212" CameraZoom="1.3" GridHeight="0" GridPlane="1" Preset="3" RenderMode="0" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
+            <Viewport CameraPosition="4.13656 6.66074 4.99133" CameraTarget="3.54329 -3.20143e-06 6.02654" CameraZoom="2" GridHeight="0" GridPlane="1" Preset="3" RenderMode="0" ShowAxes="true" ShowGrid="true" UsingLTCam="true" />
         </ViewportConfig>
         <Groups>
             <Group ID="0" Name="None" Visible="true" />
         </Groups>
     </EditorSession>
-    <MapData FogActive="false" FogColor="0.206 0.182 0.18 1" FogCulling="true" FogEnd="60" FogFalloffExp="2" FogStart="20" GlobalDecalMaxTris="300" Name="" SkyBoxActive="true" SkyBoxColor="1 1 1 1" SkyBoxTexture="../../../../../../../../">
+    <MapData FogActive="true" FogColor="0.206 0.182 0.18 1" FogCulling="true" FogEnd="60" FogFalloffExp="2" FogStart="20" GlobalDecalMaxTris="300" Name="" SkyBoxActive="true" SkyBoxColor="0 0 0.035 1" SkyBoxTexture="../../../../../../../../">
         <MapContents>
             <FileIndex_StaticObjects NumOfFiles="22">
                 <File Id="0" Path="static_objects/castlebase/wall/door_way.dae" />
@@ -520,8 +520,8 @@
                         <Var Name="FullGameSave" Value="false" />
                         <Var Name="PlayerLookAtCallback" Value="" />
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
-                        <Var Name="PlayerInteractCallback" Value="" />
-                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
+                        <Var Name="PlayerInteractCallback" Value="wakeup" />
+                        <Var Name="PlayerInteractCallbackAutoRemove" Value="true" />
                         <Var Name="Locked" Value="false" />
                         <Var Name="OpenAmount" Value="0" />
                         <Var Name="DisableBreakable" Value="false" />
@@ -1300,7 +1300,7 @@
                         <Var Name="FullGameSave" Value="false" />
                         <Var Name="PlayerLookAtCallback" Value="" />
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
-                        <Var Name="PlayerInteractCallback" Value="key_1_callback" />
+                        <Var Name="PlayerInteractCallback" Value="" />
                         <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
                         <Var Name="CustomSubItemTypeName" Value="keyone" />
                     </UserVariables>
@@ -1459,7 +1459,7 @@
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
                         <Var Name="PlayerInteractCallback" Value="" />
                         <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="Lit" Value="true" />
+                        <Var Name="Lit" Value="false" />
                         <Var Name="ConnectedLight" Value="" />
                         <Var Name="ConnectionLightAmount" Value="1" />
                         <Var Name="ConnectionLightUseOnColor" Value="true" />
@@ -1539,7 +1539,7 @@
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
                         <Var Name="PlayerInteractCallback" Value="" />
                         <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="Lit" Value="true" />
+                        <Var Name="Lit" Value="false" />
                         <Var Name="ConnectedLight" Value="" />
                         <Var Name="ConnectionLightAmount" Value="1" />
                         <Var Name="ConnectionLightUseOnColor" Value="true" />
@@ -1678,46 +1678,6 @@
                         <Var Name="ConnectionLightUseSpec" Value="false" />
                     </UserVariables>
                 </Entity>
-                <Entity Active="true" FileIndex="19" Group="0" ID="560" Name="candlestick_wall_15" Rotation="-3.14159 -2.38419e-07 -3.14159" Scale="1 1 1" Tag="" WorldPos="-14.5 1.5 -3.75">
-                    <UserVariables>
-                        <Var Name="CastShadows" Value="true" />
-                        <Var Name="StaticPhysics" Value="false" />
-                        <Var Name="IsAffectedByDecal" Value="false" />
-                        <Var Name="CallbackFunc" Value="" />
-                        <Var Name="ConnectedProps" Value="" />
-                        <Var Name="ConnectionStateChangeCallback" Value="" />
-                        <Var Name="FullGameSave" Value="false" />
-                        <Var Name="PlayerLookAtCallback" Value="" />
-                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
-                        <Var Name="PlayerInteractCallback" Value="" />
-                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="Lit" Value="true" />
-                        <Var Name="ConnectedLight" Value="" />
-                        <Var Name="ConnectionLightAmount" Value="1" />
-                        <Var Name="ConnectionLightUseOnColor" Value="true" />
-                        <Var Name="ConnectionLightUseSpec" Value="false" />
-                    </UserVariables>
-                </Entity>
-                <Entity Active="true" FileIndex="19" Group="0" ID="561" Name="candlestick_wall_16" Rotation="-3.14159 -2.38419e-07 -3.14159" Scale="1 1 1" Tag="" WorldPos="-17.5 1.5 -3.75">
-                    <UserVariables>
-                        <Var Name="CastShadows" Value="true" />
-                        <Var Name="StaticPhysics" Value="false" />
-                        <Var Name="IsAffectedByDecal" Value="false" />
-                        <Var Name="CallbackFunc" Value="" />
-                        <Var Name="ConnectedProps" Value="" />
-                        <Var Name="ConnectionStateChangeCallback" Value="" />
-                        <Var Name="FullGameSave" Value="false" />
-                        <Var Name="PlayerLookAtCallback" Value="" />
-                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
-                        <Var Name="PlayerInteractCallback" Value="" />
-                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="Lit" Value="true" />
-                        <Var Name="ConnectedLight" Value="" />
-                        <Var Name="ConnectionLightAmount" Value="1" />
-                        <Var Name="ConnectionLightUseOnColor" Value="true" />
-                        <Var Name="ConnectionLightUseSpec" Value="false" />
-                    </UserVariables>
-                </Entity>
                 <Entity Active="true" FileIndex="19" Group="0" ID="562" Name="candlestick_wall_17" Rotation="-2.23455 -1.5708 2.23455" Scale="1 1 1" Tag="" WorldPos="-22 1.5 -3.25">
                     <UserVariables>
                         <Var Name="CastShadows" Value="true" />
@@ -1812,27 +1772,7 @@
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
                         <Var Name="PlayerInteractCallback" Value="" />
                         <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="Lit" Value="true" />
-                        <Var Name="ConnectedLight" Value="" />
-                        <Var Name="ConnectionLightAmount" Value="1" />
-                        <Var Name="ConnectionLightUseOnColor" Value="true" />
-                        <Var Name="ConnectionLightUseSpec" Value="false" />
-                    </UserVariables>
-                </Entity>
-                <Entity Active="true" FileIndex="42" Group="0" ID="575" Name="chandelier_simple_short_2" Rotation="0 1.5708 0" Scale="1 1 1" Tag="" WorldPos="-11.75 5.75 -1.75">
-                    <UserVariables>
-                        <Var Name="CastShadows" Value="true" />
-                        <Var Name="StaticPhysics" Value="false" />
-                        <Var Name="IsAffectedByDecal" Value="false" />
-                        <Var Name="CallbackFunc" Value="" />
-                        <Var Name="ConnectedProps" Value="" />
-                        <Var Name="ConnectionStateChangeCallback" Value="" />
-                        <Var Name="FullGameSave" Value="false" />
-                        <Var Name="PlayerLookAtCallback" Value="" />
-                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
-                        <Var Name="PlayerInteractCallback" Value="" />
-                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="Lit" Value="true" />
+                        <Var Name="Lit" Value="false" />
                         <Var Name="ConnectedLight" Value="" />
                         <Var Name="ConnectionLightAmount" Value="1" />
                         <Var Name="ConnectionLightUseOnColor" Value="true" />
@@ -1859,47 +1799,7 @@
                         <Var Name="ConnectionLightUseSpec" Value="false" />
                     </UserVariables>
                 </Entity>
-                <Entity Active="true" FileIndex="42" Group="0" ID="577" Name="chandelier_simple_short_4" Rotation="0 1.5708 0" Scale="1 1 1" Tag="" WorldPos="3.75 5.75 -1.75">
-                    <UserVariables>
-                        <Var Name="CastShadows" Value="true" />
-                        <Var Name="StaticPhysics" Value="false" />
-                        <Var Name="IsAffectedByDecal" Value="false" />
-                        <Var Name="CallbackFunc" Value="" />
-                        <Var Name="ConnectedProps" Value="" />
-                        <Var Name="ConnectionStateChangeCallback" Value="" />
-                        <Var Name="FullGameSave" Value="false" />
-                        <Var Name="PlayerLookAtCallback" Value="" />
-                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
-                        <Var Name="PlayerInteractCallback" Value="" />
-                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="Lit" Value="true" />
-                        <Var Name="ConnectedLight" Value="" />
-                        <Var Name="ConnectionLightAmount" Value="1" />
-                        <Var Name="ConnectionLightUseOnColor" Value="true" />
-                        <Var Name="ConnectionLightUseSpec" Value="false" />
-                    </UserVariables>
-                </Entity>
-                <Entity Active="true" FileIndex="42" Group="0" ID="578" Name="chandelier_simple_short_5" Rotation="0 1.5708 0" Scale="1 1 1" Tag="" WorldPos="11.5 5.75 -1.75">
-                    <UserVariables>
-                        <Var Name="CastShadows" Value="true" />
-                        <Var Name="StaticPhysics" Value="false" />
-                        <Var Name="IsAffectedByDecal" Value="false" />
-                        <Var Name="CallbackFunc" Value="" />
-                        <Var Name="ConnectedProps" Value="" />
-                        <Var Name="ConnectionStateChangeCallback" Value="" />
-                        <Var Name="FullGameSave" Value="false" />
-                        <Var Name="PlayerLookAtCallback" Value="" />
-                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
-                        <Var Name="PlayerInteractCallback" Value="" />
-                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
-                        <Var Name="Lit" Value="true" />
-                        <Var Name="ConnectedLight" Value="" />
-                        <Var Name="ConnectionLightAmount" Value="1" />
-                        <Var Name="ConnectionLightUseOnColor" Value="true" />
-                        <Var Name="ConnectionLightUseSpec" Value="false" />
-                    </UserVariables>
-                </Entity>
-                <Entity Active="true" FileIndex="42" Group="0" ID="579" Name="chandelier_simple_short_6" Rotation="0 1.5708 0" Scale="1 1 1" Tag="" WorldPos="19.25 5.75 -1.75">
+                <Entity Active="true" FileIndex="42" Group="0" ID="578" Name="chandelier_simple_short_5" Rotation="0 1.5708 0" Scale="1 1 1" Tag="" WorldPos="19.25 5.75 -1.75">
                     <UserVariables>
                         <Var Name="CastShadows" Value="true" />
                         <Var Name="StaticPhysics" Value="false" />
@@ -2615,7 +2515,7 @@
                         <Var Name="ConnectionLightUseSpec" Value="false" />
                     </UserVariables>
                 </Entity>
-                <Sound Active="false" Group="0" ID="668" MaxDistance="500" MinDistance="1" Name="bangsound" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../sounds/scare/scare_wall_stomp.snt" Tag="" UseDefault="false" Volume="5" WorldPos="8.25 4.25 -5.75" />
+                <Sound Active="false" Group="0" ID="668" MaxDistance="500" MinDistance="1" Name="bangsound" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../sounds/scare/scare_wall_stomp.snt" Tag="" UseDefault="false" Volume="5" WorldPos="8.25 4.25 -5.75" />
                 <Entity Active="true" FileIndex="39" Group="0" ID="688" Name="firstfloordoor" Rotation="0 12.5664 0" Scale="1 1 1" Tag="" WorldPos="-8 -3.92673 -15.75">
                     <UserVariables>
                         <Var Name="CastShadows" Value="true" />
@@ -2645,7 +2545,7 @@
                         <Var Name="IsAffectedByDecal" Value="true" />
                     </UserVariables>
                 </Entity>
-                <Sound Active="false" Group="0" ID="691" MaxDistance="500" MinDistance="1" Name="scaresound" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../sounds/react/react_pant.snt" Tag="" UseDefault="true" Volume="10" WorldPos="8 1.25 -5.75" />
+                <Sound Active="false" Group="0" ID="691" MaxDistance="500" MinDistance="1" Name="scaresound" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../sounds/react/react_pant.snt" Tag="" UseDefault="true" Volume="10" WorldPos="8 1.25 -5.75" />
                 <Entity Active="true" FileIndex="64" Group="0" ID="692" Name="sloped_square_shelf_2" Rotation="3.14159 1.5708 3.14159" Scale="1 1 1" Tag="" WorldPos="13.25 0 -6.5">
                     <UserVariables>
                         <Var Name="CastShadows" Value="true" />
@@ -2886,7 +2786,7 @@
                 </Area>
                 <BoxLight Active="true" BlendFunc="0" CastShadows="false" DiffuseColor="0.086 0.069 0.085 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="735" Name="BoxLight_1" Radius="1" Rotation="0 0 0" Scale="59 30 20" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="59 30 20" Tag="" WorldPos="0.75 1.5 -9" />
                 <BoxLight Active="true" BlendFunc="0" CastShadows="false" DiffuseColor="0.069 0.086 0.085 1" FalloffMap="" FlickerActive="false" FlickerFade="false" FlickerOffColor="0 0 0 1" FlickerOffFadeMaxLength="0" FlickerOffFadeMinLength="0" FlickerOffMaxLength="0" FlickerOffMinLength="0" FlickerOffPS="" FlickerOffRadius="0" FlickerOffSound="" FlickerOnFadeMaxLength="0" FlickerOnFadeMinLength="0" FlickerOnMaxLength="0" FlickerOnMinLength="0" FlickerOnPS="" FlickerOnSound="" Gobo="" GoboAnimFrameTime="0" GoboAnimMode="None" Group="0" ID="736" Name="BoxLight_2" Radius="1" Rotation="0 0 0" Scale="13.5 40 12" ShadowResolution="High" ShadowsAffectDynamic="true" ShadowsAffectStatic="true" Size="13.5 40 12" Tag="" WorldPos="-0.5 -3.75 6.25" />
-                <Sound Active="true" Group="0" ID="737" MaxDistance="500" MinDistance="1" Name="Sound_2" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../sounds/07/07_amb_breath.snt" Tag="" UseDefault="true" Volume="1" WorldPos="-0.25 1.25 5.75" />
+                <Sound Active="true" Group="0" ID="737" MaxDistance="500" MinDistance="1" Name="Sound_2" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../sounds/07/07_amb_breath.snt" Tag="" UseDefault="true" Volume="1" WorldPos="-0.25 1.25 5.75" />
                 <Entity Active="true" FileIndex="71" Group="0" ID="775" Name="block_box_1" Rotation="0 -1.5708 0" Scale="0.25 2.5 5.5" Tag="" WorldPos="8.75 2.75 9">
                     <UserVariables>
                         <Var Name="CastShadows" Value="true" />
@@ -2982,7 +2882,67 @@
                         <Var Name="VisionMaxSanity" Value="30" />
                     </UserVariables>
                 </Entity>
-                <Area Active="true" AreaType="Script" Group="0" ID="791" Mesh="" Name="mansion_1_jump" Rotation="0 0 0" Scale="1.25 4 2.75" Tag="" WorldPos="4.875 2 5.875">
+                <Entity Active="false" FileIndex="72" Group="0" ID="826" Name="servant_grunt_1" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-20.25 0.25 -1.25">
+                    <UserVariables>
+                        <Var Name="CallbackFunc" Value="" />
+                        <Var Name="DisableTriggers" Value="true" />
+                        <Var Name="Hallucination" Value="false" />
+                        <Var Name="HallucinationEndDist" Value="3" />
+                    </UserVariables>
+                </Entity>
+                <Entity Active="false" FileIndex="72" Group="0" ID="827" Name="servant_grunt_2" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-19 0 -1.75">
+                    <UserVariables>
+                        <Var Name="CallbackFunc" Value="" />
+                        <Var Name="DisableTriggers" Value="true" />
+                        <Var Name="Hallucination" Value="false" />
+                        <Var Name="HallucinationEndDist" Value="3" />
+                    </UserVariables>
+                </Entity>
+                <Entity Active="false" FileIndex="72" Group="0" ID="828" Name="servant_grunt_3" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-20.25 0 -2.75">
+                    <UserVariables>
+                        <Var Name="CallbackFunc" Value="" />
+                        <Var Name="DisableTriggers" Value="true" />
+                        <Var Name="Hallucination" Value="false" />
+                        <Var Name="HallucinationEndDist" Value="3" />
+                    </UserVariables>
+                </Entity>
+                <Area Active="true" AreaType="PathNode" Group="0" ID="837" Mesh="" Name="PathNodeArea_1" Rotation="0 0 0" Scale="0.5 0.5 0.5" Tag="" WorldPos="-8.25 0 -2">
+                    <UserVariables />
+                </Area>
+                <Area Active="true" AreaType="PathNode" Group="0" ID="838" Mesh="" Name="PathNodeArea_2" Rotation="0 0 0" Scale="0.5 0.5 0.5" Tag="" WorldPos="-8 0 -13.75">
+                    <UserVariables />
+                </Area>
+                <Sound Active="true" Group="0" ID="839" MaxDistance="5" MinDistance="1" Name="Sound_1" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../../../../../../../../../07_amb_breath.snt" Tag="" UseDefault="true" Volume="1" WorldPos="-17.75 0 -2" />
+                <Entity Active="true" FileIndex="73" Group="0" ID="840" Name="servant_brute_1" Rotation="0 0.523601 0" Scale="1 1 1" Tag="" WorldPos="4.75 0 6">
+                    <UserVariables>
+                        <Var Name="CallbackFunc" Value="" />
+                        <Var Name="DisableTriggers" Value="true" />
+                        <Var Name="Hallucination" Value="true" />
+                        <Var Name="HallucinationEndDist" Value="1.5" />
+                    </UserVariables>
+                </Entity>
+                <FogArea Active="true" Color="0.5 0.5 0.5 1" End="15" FalloffExp="1" Group="0" ID="841" Name="FogArea_1" Rotation="0 0 0" Scale="11 12 4" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-16.5 0 -1.5" />
+                <Entity Active="true" FileIndex="42" Group="0" ID="842" Name="chandelier_simple_short_4" Rotation="0 1.5708 0" Scale="1 1 1" Tag="" WorldPos="7.25 5.75 -1.75">
+                    <UserVariables>
+                        <Var Name="CastShadows" Value="true" />
+                        <Var Name="StaticPhysics" Value="false" />
+                        <Var Name="IsAffectedByDecal" Value="false" />
+                        <Var Name="CallbackFunc" Value="" />
+                        <Var Name="ConnectedProps" Value="" />
+                        <Var Name="ConnectionStateChangeCallback" Value="" />
+                        <Var Name="FullGameSave" Value="false" />
+                        <Var Name="PlayerLookAtCallback" Value="" />
+                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="false" />
+                        <Var Name="PlayerInteractCallback" Value="" />
+                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
+                        <Var Name="Lit" Value="false" />
+                        <Var Name="ConnectedLight" Value="" />
+                        <Var Name="ConnectionLightAmount" Value="1" />
+                        <Var Name="ConnectionLightUseOnColor" Value="true" />
+                        <Var Name="ConnectionLightUseSpec" Value="false" />
+                    </UserVariables>
+                </Entity>
+                <Area Active="true" AreaType="Script" Group="0" ID="844" Mesh="" Name="ScriptArea_1" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-130.75 0 -20.75">
                     <UserVariables>
                         <Var Name="PlayerLookAtCallback" Value="" />
                         <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
@@ -2992,81 +2952,16 @@
                         <Var Name="MaxFocusDistance" Value="-1" />
                     </UserVariables>
                 </Area>
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="793" Name="FogArea_1" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-21.25 0 -0.25" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="794" Name="FogArea_2" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-20.75 0 -0.75" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="795" Name="FogArea_4" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-20 0 -0.75" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="796" Name="FogArea_5" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-19 0 -0.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="797" Name="FogArea_6" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-18.75 0 -1" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="798" Name="FogArea_7" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-19.25 0 -2" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="799" Name="FogArea_8" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-19.5 0 -2.25" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="800" Name="FogArea_9" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-21 0 -2.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="801" Name="FogArea_11" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-20.75 0 -2.75" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="802" Name="FogArea_12" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-19.5 0 -2.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="803" Name="FogArea_13" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-18.75 0 -1.75" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="804" Name="FogArea_14" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-18.75 0 -1.25" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="805" Name="FogArea_15" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-20.5 0 -1.75" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="806" Name="FogArea_16" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-18 0 -1.25" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="807" Name="FogArea_17" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-17.25 0 -1.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="808" Name="FogArea_18" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-17.5 0 -2.25" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="809" Name="FogArea_19" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-18 0 -2.75" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="810" Name="FogArea_20" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-18 0 -2.75" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="811" Name="FogArea_21" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-17 0 -1" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="812" Name="FogArea_22" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-17.5 0 -0.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="813" Name="FogArea_23" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-16.25 0 -0.75" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="814" Name="FogArea_24" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-16 0 -1" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="815" Name="FogArea_25" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-15.75 0 -1.25" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="816" Name="FogArea_26" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-15.75 0 -2.25" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="817" Name="FogArea_27" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-15.25 0 -2.25" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="818" Name="FogArea_28" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-15.5 0 -2.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="819" Name="FogArea_29" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-16 0 -2.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="820" Name="FogArea_30" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-16.5 0 -2.25" />
-                <Entity Active="false" FileIndex="72" Group="0" ID="826" Name="servant_grunt_1" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-20.25 0 -0.75">
+                <Area Active="true" AreaType="Script" Group="0" ID="845" Mesh="" Name="ScriptArea_2" Rotation="0 0 0" Scale="3 -5 3.25" Tag="" WorldPos="-8 -1.5 -13.75">
                     <UserVariables>
-                        <Var Name="CallbackFunc" Value="" />
-                        <Var Name="DisableTriggers" Value="false" />
-                        <Var Name="Hallucination" Value="false" />
-                        <Var Name="HallucinationEndDist" Value="3" />
+                        <Var Name="PlayerLookAtCallback" Value="" />
+                        <Var Name="PlayerLookAtCallbackAutoRemove" Value="true" />
+                        <Var Name="PlayerInteractCallback" Value="" />
+                        <Var Name="PlayerInteractCallbackAutoRemove" Value="false" />
+                        <Var Name="ItemInteraction" Value="false" />
+                        <Var Name="MaxFocusDistance" Value="-1" />
                     </UserVariables>
-                </Entity>
-                <Entity Active="false" FileIndex="72" Group="0" ID="827" Name="servant_grunt_2" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-20.25 0 -1.75">
-                    <UserVariables>
-                        <Var Name="CallbackFunc" Value="" />
-                        <Var Name="DisableTriggers" Value="false" />
-                        <Var Name="Hallucination" Value="false" />
-                        <Var Name="HallucinationEndDist" Value="3" />
-                    </UserVariables>
-                </Entity>
-                <Entity Active="false" FileIndex="72" Group="0" ID="828" Name="servant_grunt_3" Rotation="0 0 0" Scale="1 1 1" Tag="" WorldPos="-20.25 0 -2.75">
-                    <UserVariables>
-                        <Var Name="CallbackFunc" Value="" />
-                        <Var Name="DisableTriggers" Value="false" />
-                        <Var Name="Hallucination" Value="false" />
-                        <Var Name="HallucinationEndDist" Value="3" />
-                    </UserVariables>
-                </Entity>
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="829" Name="FogArea_31" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-14.5 0 -2.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="830" Name="FogArea_32" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-13.5 0 -1" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="831" Name="FogArea_33" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-11.75 0 -1.75" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="832" Name="FogArea_34" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-12.25 0 -3" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="833" Name="FogArea_35" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-12.5 0 -0.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="834" Name="FogArea_36" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-13.25 0 -2.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="835" Name="FogArea_37" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-10.5 0 -2.5" />
-                <FogArea Active="true" Color="1 1 1 1" End="10" FalloffExp="1" Group="0" ID="836" Name="FogArea_38" Rotation="0 0 0" Scale="1 1 1" ShownBacksideWhenInside="true" ShownBacksideWhenOutside="false" Start="0" Tag="" WorldPos="-10 0 -0.5" />
-                <Area Active="true" AreaType="PathNode" Group="0" ID="837" Mesh="" Name="PathNodeArea_1" Rotation="0 0 0" Scale="0.5 0.5 0.5" Tag="" WorldPos="-8.25 0 -2">
-                    <UserVariables />
                 </Area>
-                <Area Active="true" AreaType="PathNode" Group="0" ID="838" Mesh="" Name="PathNodeArea_2" Rotation="0 0 0" Scale="0.5 0.5 0.5" Tag="" WorldPos="-8 0 -13.75">
-                    <UserVariables />
-                </Area>
-                <Sound Active="true" Group="0" ID="839" MaxDistance="5" MinDistance="1" Name="Sound_1" Rotation="0 0 0" Scale="1 1 1" SoundEntityFile="../../../../../../../../07_amb_breath.snt" Tag="" UseDefault="true" Volume="1" WorldPos="-17.75 0 -2" />
-                <Entity Active="false" FileIndex="73" Group="0" ID="840" Name="servant_brute_1" Rotation="0 1.5708 0" Scale="1 1 1" Tag="" WorldPos="4.75 0 6">
-                    <UserVariables>
-                        <Var Name="CallbackFunc" Value="" />
-                        <Var Name="DisableTriggers" Value="false" />
-                        <Var Name="Hallucination" Value="true" />
-                        <Var Name="HallucinationEndDist" Value="0.1" />
-                    </UserVariables>
-                </Entity>
             </Entities>
             <Misc />
             <StaticObjectCombos />
