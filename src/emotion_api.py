@@ -9,7 +9,7 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
 HEADERS = {
     # Request headers. Replace the placeholder key below with your subscription key.
     'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': '<demo>',
+    'Ocp-Apim-Subscription-Key': 'demo',
 }
 
 URL_GLOBAL_PARAMS = urllib.parse.urlencode({
@@ -19,9 +19,13 @@ HTTPS_CONNECTION = 'westus.api.cognitive.microsoft.com'
 
 # takes a url to an image and returns the scores for all faces
 # in the image, from left to right
-def analyse_picture(url):
-    # Replace the example URL below with the URL of the image you want to analyze.
-    body = "{ 'url': '" + url + "' }"
+def analyse_picture(filepath, url = True):
+
+    if url:
+        # Replace the example URL below with the URL of the image you want to analyze.
+        body = "{ 'url': '" + filepath + "' }"
+    else:
+        body = "{ 'location': '"
 
     try:
         # NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
@@ -33,13 +37,21 @@ def analyse_picture(url):
         response = conn.getresponse()
         data = response.read()
         # 'data' contains the JSON data. The following formats the JSON data for display.
-        parsed = json.loads(data)
-        parsed = sorted(parsed, key = lambda k: k['faceRectangle']['left'])
-        conn.close()
+        parsed = json.loads(data.decode())
+
+        if 'error' in parsed:
+            print("Data has an error")
+            raise Exception('JSON data has been read incorrectly')
+        elif 'statusCode' in parsed:
+            print("Data has a status code")
+            raise Exception(parsed['message'])
+        else:
+            parsed = sorted(parsed, key = lambda k: k['faceRectangle']['left'])
+            conn.close()
+            return parsed
+
     except Exception as e:
         print(e.args)
-
-    return parsed
 
 # a basic function that converts the list of scores into a raw
 # 'scared' value
@@ -68,7 +80,7 @@ def how_scared(face):
 
     return(val)
 
-data = analyse_picture('<demo>')
+data = analyse_picture(demo)
 
 for obj in data:
     print (how_scared(obj))
