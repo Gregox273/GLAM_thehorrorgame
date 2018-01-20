@@ -1,0 +1,122 @@
+void OnEnter ()
+{
+		AddEntityCollideCallback("Player", "ScriptArea_1", "OnCross", true, 1);
+		AddEntityCollideCallback("Player", "ScriptArea_2", "JustineSpawn", true, 1);
+		AddEntityCollideCallback("Player", "Downstairsslam", "DoorSlam", true, 1);
+		SetEntityCallbackFunc("basementkey", "OnPickup2");
+		AddEntityCollideCallback("Player", "enemy_basement_area", "FinalChase", true, 1);
+		AddUseItemCallback("", "basementkey", "cellar_door1", "UsedKeyOnDoor", true);
+		AddEntityCollideCallback("Player", "ScriptArea_3", "AlterCross", true, 1);
+}
+//--------------------------------------------------------------------------------//
+void OnCross(string &in asParent, string &in asChild, int alState)
+{
+		StartEffectFlash(0.1f, 1.0f, 0.1f);
+		SetEntityActive("armour_rusty_complete_3", true);
+		SetEntityActive("armour_rusty_complete_1", true);
+		SetEntityActive("armour_rusty_complete_4", true);
+		SetEntityActive("armour_rusty_complete_5", true);
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void JustineSpawn(string &in asParent, string &in asChild, int alState)
+{
+		AddPropHealth("mansion_8", -50);
+		SetEntityActive("enemy_suitor_1", true);
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_1", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_2", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_3", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_4", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_5", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_6", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_7", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_8", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_9", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_10", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_11", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_12", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_13", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_14", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_15", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_16", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_17", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_18", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_19", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_20", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_21", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_22", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_23", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_24", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_25", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_26", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_27", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_28", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_29", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_30", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_31", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_32", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_33", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_34", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_35", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_36", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_37", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_38", 0, "");
+		AddEnemyPatrolNode("enemy_suitor_1", "PathNodeArea_39", 0, "");
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+		PlaySoundAtEntity("", "react_breath", "Player", 0, false);
+		PlaySoundAtEntity("", "react_breath", "Player", 0, false);	
+}
+//--------------------------------------------------------------------------------//
+void DoorSlam(string &in asParent, string &in asChild, int alState)
+{
+		SetSwingDoorClosed("cellar_door1", true, true);
+		SetSwingDoorLocked("cellar_door1", true, true);
+}
+//--------------------------------------------------------------------------------//
+void FinalChase(string &in asParent, string &in asChild, int alState)
+{
+		AddPropHealth("cellar_door1", -100);
+		SetEntityActive("enemy_basement", true);
+		ShowEnemyPlayerPosition("enemy_basement");
+}
+//--------------------------------------------------------------------------------//
+void OnPickup2(string &in asEntity, string &in type)
+{
+		SetEntityActive("Wuhmbow", false);
+}
+//--------------------------------------------------------------------------------//
+void UsedKeyOnDoor(string &in asItem, string &in asEntity)
+{
+		SetSwingDoorLocked("cellar_door1", false, true);
+		PlaySoundAtEntity("", "unlock_door.snt", "cellar_door1", 0, false);
+		RemoveItem("basementkey");
+}
+//--------------------------------------------------------------------------------//
+void AlterCross(string &in asParent, string &in asChild, int alState)
+{
+		SetEntityActive("alter_enemy", true);
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_40", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_41", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_42", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_43", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_44", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_45", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_46", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_47", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_48", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_49", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_50", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_51", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_52", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_53", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_54", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_55", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_56", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_57", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_58", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_59", 0, "");
+		AddEnemyPatrolNode("alter_enemy", "PathNodeArea_60", 0, "");
+}
+void OnLeave ()
+{
+}

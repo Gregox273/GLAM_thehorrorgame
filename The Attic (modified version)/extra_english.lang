@@ -1,0 +1,79 @@
+<LANGUAGE>
+    <RESOURCES>
+	</RESOURCES>
+	
+		<CATEGORY Name="CustomStoryMain">
+		<Entry Name="Description">Derrick lives with his mother. Derrick has never been allowed past the second floor of his house, where his bedroom is. His father's workshop takes up everything from the third floor, to the attic. The story begins with Derrick reminiscing about his past with his father. He then sets off in search of the truth behind his father's disappearance. You, the player, enter the story when Derrick decides to embark on this adventure.  Soon, his worst fears are realized, and this only makes the journey more terrifying.</Entry>
+		</CATEGORY>
+		
+		<CATEGORY Name="Endcredits">
+        <Entry Name="Credittext">GLAM: The Attic Mod[br][br][br]Mods by:[br]Makala Hieshima (Scripting & Storyline)[br]Greg Brooks (Mapping)[br]Lizzie Hawkins (Emotion Recognition)[br]Anindya Sharma (Emotion Recognition)[br][br][br]Original by:[br]JetlinerX (Scripting)[br]Seth1466 (Mapping)[br][br][br]Driven by:[br]Microsoft Emotion API[br][br][br][br]Music By:[br]"In Flames" - "The Attic"[br][br][br]Skyboxes By:[br]CGTextures.com[br][br][br]The Following Custom Story is Split Into Chapters.  You just played:[br]Chapter 1[br]Please play "Chapter 2 Now"[br][br][br]Did You Find The Secret Room? :)[br][br][br]...To Be Continued...[br][br][br]This Has Been An "EverLost Development Group Production."  Visit the Frictional Games Forums Custom Story Showcase / The Attic for more information on our project.[br][br]Thanks For Playing! :)</Entry>
+		</CATEGORY>
+	
+	    <CATEGORY Name="Journal">
+		 <Entry Name="Note_noteone_Name">Derrick's Journal April 7, 1847 Entry 2</Entry>
+		 <Entry Name="Note_noteone_Text">Sixteen years have passed since I last saw my father. Mother started drinking pretty heavily five years ago. She says that he was a "scientist," called into the line of duty to make chemical weapons for the war. I just hope that he'll be in one piece when he returns from the war.</Entry>
+		 <Entry Name="Note_notetwo_Name">Derrick's Journal April 7, 1847 Entry 1</Entry>
+		 <Entry Name="Note_notetwo_Text">Father and I used to sit out here when mother was tending to the guests. I was only two, so my memories of him have mostly faded, but I remember him saying one day:[br][br]"Derrick, I know that someday you'll want to understand everything, but keep in mind that some things should just remain in the dark."[br][br]...because I was only two, my response was a mix of gargling mumbles that nobody understood. My father looked down at me and finished with:[br][br]"Good boy, I know you understand"</Entry>
+		 <Entry Name="Note_notethree_Name">Picture's Engraving</Entry>
+		 <Entry Name="Note_notethree_Text">The following trophy is awarded to: Ellis Jackson.[br][br]For the predicted invention of:[br][br]Laudanum[br][br]A cash reward of 1,000,000 pounds will be rewarded to Ellis E. Jackson, his wife, Libby R. Jackson, along with their son Derrick S. Jackson upon completion of the serum.</Entry>
+         <Entry Name="Note_desknoteone_Name">Workstation Log 6</Entry>
+		 <Entry Name="Note_desknoteone_Text">It has come to my attention that a great advance must be made in the field of medicine for use in the war, and I've decided to take on this task! My research into herbs and chemicals has been mostly successful thus far. Let it be known that I, Ellis Jackson, will not rest until an all-healing serum has been made. So far, I have a working title of "Laudanum," but that will most likely change when the project is finished. I will continue to document my findings. I am certain that this will be the greatest invention of the 1800's. I will go down in history.</Entry>
+		 <Entry Name="Note_assistantnote1_Name">Assistant's Diary Entry 93</Entry>
+		 <Entry Name="Note_assistantnote1_Text">Today is the big day...[br][br]Ellis is letting me test the first version of the serum. He said it was stable and should not be at all harmful. I am very excited to see the results of our labor, but also scared because I must be injured in order to tell if it works. We plan to use a knife to cut a small gash in my arm. I know it will hurt, but I have a lot of trust in Ellis. He has been working on this for six months straight. Okay, its 9:00AM. I need to get to the workshop.</Entry>
+		 <Entry Name="Note_pianonote_Name">Assistant's Diary Entry 94</Entry>
+		 <Entry Name="Note_pianonote_Text">Phew, all went well, the gash looks really nasty though. We have a towel wrapped around it, so the bleeding should stop, and it should stop quicker because of the Laudanum. I'm not going to lie however, the laudanum has given me an awful headache and nausea, and I don't feel like I am really "me" anymore.  But surely these are small side-effects, Ellis says I'll be back to normal within the hour.</Entry>
+		 <Entry Name="Note_bednote_Name">Assistant's Diary Entry 95</Entry>
+		 <Entry Name="Note_bednote_Text">Oh God... It has been five hours! I can't feel anything in my body! Ellis insists that he must amputate my arm, as it has lost circulation and seems to be rotting while still attached to my body. We are going to replace it with a simple metal prosthetic until we can get a more practical one. God save me. At least my sacrifice was for science...</Entry>
+		 <Entry Name="Note_note_recipe_Text">---------------------------------[br]The Following is a Recipe for Laudanum, a working invention based in the United Kingdom.[br]----------------------------------[br]Description of Medicine:[br]Laudanum is a herb/organic substance that can either be injected into the body or ingested orally. It is designed to heal all manners of major and minor wounds.[br][br]Ingredients: 2 quarts human blood[br]Krupana Vine[br]1 pint Kartic Acid.</Entry>
+		 <Entry Name="Note_note_recipe_Name">Laudanum Recipe</Entry>
+		 <Entry Name="Note_note_attic_desk_Text">Perfect!  People are coming into my shop after seeing the fliers I have posted around town. As long as they keep coming in, I can continue to sacrifice them for the blood needed in the Laudanum. At least they die in the name of science... I think I have successfully duplicated the working version of the serum. I will lock these tubes away, and soon sell them. I'm going to be famous! Alright, back to work.</Entry>
+		 <Entry Name="Note_note_attic_desk_Name">Laudanum Log 3</Entry>
+		 <Entry Name="Note_scare_note1_Text">*The note is written in blood*[br]DON'T TOUCH MY RESEARCH</Entry>
+		 <Entry Name="Note_scare_note1_Name">Bloody Note</Entry>
+		 <Entry Name="Note_demonworldnote_Text">*The note is written in blood*[br]You should not have gone in there, Derrick...</Entry>
+		 <Entry Name="Note_demonworldnote_Name">Bloody Note</Entry>
+		 <Entry Name="Note_deck_note_demon_Text">*The note is written in blood*[br]Stop, Derrick[br]You've gone too far. If you know whats good for you, you will stop and stay right here on this deck and forget about everything you learned today...</Entry>
+		 <Entry Name="Note_deck_note_demon_Name">Bloody Note</Entry>
+		 <Entry Name="Note_note_paper01_1_Text">It's done! I've got a working version of the serum. I'm gooing to lock it in the main storage room. What an accomplishment! I will now try to re-create this serum!</Entry>
+		 <Entry Name="Note_note_paper01_1_Name">Laudanum Log 2</Entry>
+		 <Entry Name="Note_AlterNote_Text">Burn all who stand in the way of science and research...</Entry>
+		 <Entry Name="Note_AlterNote_Name">Page 82, Rule 6</Entry>
+		 <Entry Name="Note_CowNote_Text">Well Done! You have found the secret room! This is a secret note, THAT YOU ALSO FOUND! Congratulations.</Entry>
+		 <Entry Name="Note_CowNote_Name">You Found a Secret Room!</Entry>
+		</CATEGORY>
+		
+	    <CATEGORY Name ="Inventory">
+		 <Entry Name="ItemName_keyone">Bedroom Key</Entry>  
+		 <Entry Name="ItemDesc_keyone">A key to unlock my bedroom door.</Entry>
+		 <Entry Name="ItemName_key_attic">Stairwell Key</Entry>  
+		 <Entry Name="ItemDesc_key_attic">A key to the stairwell.</Entry>
+		 <Entry Name="ItemName_assistantkey">Assistant's Room Key</Entry>  
+		 <Entry Name="ItemDesc_assistantkey">A key to the Assistant's Room across the hallway.</Entry>
+		 <Entry Name="ItemDesc_key_firstfloor">A key to the first floor.</Entry>
+		 <Entry Name="ItemName_key_firstfloor">First Floor Key</Entry>
+		 <Entry Name="ItemDesc_mapsixkey">A key to the stairwell.</Entry>
+		 <Entry Name="ItemName_mapsixkey">Stairwell Key</Entry>
+		 <Entry Name="ItemDesc_key_basement">A key to the Main Storage Room.</Entry>
+		 <Entry Name="ItemName_key_basement">Main Storage Key</Entry>
+		 <Entry Name="ItemDesc_basementkey">A key to the basement.</Entry>
+		 <Entry Name="ItemName_basementkey">Basement Key</Entry>
+		</CATEGORY>
+		
+		<CATEGORY Name="Messages">
+         <Entry Name="scare">That sound... it came from above me...</Entry>
+		 <Entry Name="MonsterHide1">**HIDE** "Something's coming through the door!"</Entry>
+		 <Entry Name="Run">I have to get to that door, QUICK!</Entry>
+		 <Entry Name="DerrekMother">Derrick, for the love of God, do not end up like your mother...</Entry>
+		 <Entry Name="DerrekMother2">For the last, and only time Derrick... stay out of my research!</Entry>
+		 <Entry Name="VaultHint">Hmm, if I can get something to stand on this counter would be small enough to vault over...</Entry>
+		</CATEGORY>
+		
+		<CATEGORY Name="Levels">
+		<Entry Name="stairwell">Stairwell</Entry>
+		<Entry Name="secondfloordoor">Second Floor</Entry>
+		<Entry Name="firstfloordoor">First Floor</Entry>
+		<Entry Name="thirdfloordoor">Third Floor</Entry>
+		<Entry Name="basementdoor">Basement</Entry>
+		</CATEGORY>
+</LANGUAGE>

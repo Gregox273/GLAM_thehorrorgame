@@ -1,0 +1,41 @@
+/*************************************************************
+*
+*         Setup
+...
+*/
+
+// Define methods of inducing fear
+enum Scares {
+    jumpscare,
+    one_monster,
+    many_monsters,
+    music,
+    suspense,
+    visibility,
+    insanity
+}
+
+// Define weighting for each method, say 0 to 100
+SetGlobalVarInt("jumpscare_weight",50);
+SetGlobalVarInt("one_monster_weight",50);
+SetGlobalVarInt("many_monsters_weight",50);
+SetGlobalVarInt("music_weight",50);
+SetGlobalVarInt("suspense_weight",50);
+SetGlobalVarInt("visibility_weight",50);
+SetGlobalVarInt("insanity_weight",50);
+
+/*************************************************************
+*
+*         Examples
+*
+AddGlobalVarInt("suspense_weight",5);  // +5 suspense weighting
+SetGlobalVarInt("jumpscare_weight",30);  // jumpscare weight set to 30
+int rtn = GetGlobalVarInt("visibility_weight",40);  // get visibility weight
+...
+*/
+
+/*************************************************************
+*
+*         Script
+...
+*/

@@ -1,0 +1,75 @@
+void OnEnter ()
+{
+		AddEntityCollideCallback("Player", "sanityrestore", "Newmap", true, 1);
+		AddEntityCollideCallback("Player", "Leftstatuegasp", "StatueLeft", true, 1);
+		AddEntityCollideCallback("Player", "Rightstatuegasp", "StatueRight", true, 1);
+		AddEntityCollideCallback("Player", "monster_spawn1", "MonsterSpawn", true, 1);
+		AddEntityCollideCallback("Player", "scaresound_1", "Portraitscare", true, 1);
+		AddUseItemCallback("", "mapsixkey", "stairwell", "UsedKeyOnDoor", true);
+}
+//--------------------------------------------------------------------------------//		
+void UsedKeyOnDoor(string &in asItem, string &in asEntity)
+{
+		SetLevelDoorLocked("stairwell", false);
+		SetLevelDoorLockedSound("stairwell", "door_level_wood_locked.snt");
+		RemoveItem("mapsixkey");
+}
+//--------------------------------------------------------------------------------//
+void NewMap(string &in asParent , string &in asChild , int alState)
+{
+		SetPlayerSanity(100);
+}
+//--------------------------------------------------------------------------------//
+void StatueLeft(string &in asParent , string &in asChild , int alState)
+{
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void MonsterSpawn(string &in asParent , string &in asChild , int alState)
+{
+		AddPropHealth("final_door", -50);
+		PlaySoundAtEntity("", "notice.snt", "Player", 0, false);
+		SetEntityActive("enemy_grunt1", true);
+		SetMessage("Messages", "MonsterHide1", 0);
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_1", 2, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_2", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_3", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_4", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_5", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_6", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_7", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_8", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_9", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_10", 4, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_11", 2, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_12", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_13", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_14", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_15", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_16", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_17", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_18", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_19", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_20", 4, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_21", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_22", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_23", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_24", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_25", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_26", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_27", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_28", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_29", 4, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_30", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_31", 0, "");
+		AddEnemyPatrolNode("enemy_grunt1", "PathNodeArea_32", 4, "");
+}
+//--------------------------------------------------------------------------------//
+void Portraitscare(string &in asParent , string &in asChild , int alState)
+{
+		PlaySoundAtEntity("", "react_breath_slow.snt", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void OnLeave ()
+{
+}

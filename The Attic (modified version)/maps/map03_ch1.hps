@@ -1,0 +1,162 @@
+void OnStart()
+{
+		AddUseItemCallback("", "mapsixkey", "demon_transfer1", "UsedKeyOnDoor", true);
+        AddEntityCollideCallback("Player", "attic_sound_scare1", "OnBegin", true, 1);
+        AddEntityCollideCallback("Player", "scare_1", "Scare", true, 1);
+		AddEntityCollideCallback("Player", "Doorslamarea", "DoorScare", true, 1);
+		AddEntityCollideCallback("Player", "scare_two", "Scare2", true, 1);
+		AddEntityCollideCallback("Player", "levelchangefade", "FallOver", true, 1);
+		AddEntityCollideCallback("Player", "key_remove", "Remove", true, 1);
+}
+//--------------------------------------------------------------------------------//
+void UsedKeyOnDoor(string &in asItem, string &in asEntity)
+{
+		SetLevelDoorLocked("demon_transfer1", false);
+		SetLevelDoorLockedSound("demon_transfer1", "door_level_wood_locked.snt");
+		RemoveItem("mapsixkey");
+}
+//--------------------------------------------------------------------------------//
+void FallOver(string &in asParent , string &in asChild , int alState)
+ {
+        PlaySoundAtEntity("", "player_bodyfall.snt", "Player", 0, true);
+		FadeImageTrailTo(2, 2);
+        FadePlayerRollTo(50, 33, 33);
+        FadeRadialBlurTo(0.20, 2);
+		SetPlayerCrouching(true);
+        AddTimer("trig1", 15.0f, "beginStory");
+		AddTimer("trig2", 3.0f, "Fadeout");
+		SetPlayerActive(false);
+}
+//--------------------------------------------------------------------------------//
+void Fadeout(string &in asTimer)
+{
+		FadeOut(3.0f);
+		ChangeMap("map04_ch1.map", "PlayerStartArea_2", "", "");
+}
+//--------------------------------------------------------------------------------//
+void beginStory(string &in asTimer)
+ {
+		ChangePlayerStateToNormal();
+		FadePlayerRollTo(0, 33, 33);
+		FadeRadialBlurTo(0.0, 1);
+		SetPlayerCrouching(false);
+		FadeImageTrailTo(0,1);
+ }
+//--------------------------------------------------------------------------------//
+void DoorScare(string &in asParent, string &in asChild, int alState)
+{
+		SetSwingDoorClosed("mansion_8", true, true);
+		SetSwingDoorLocked("mansion_8", true, true);
+		PlaySoundAtEntity("", "door_level_cistern_close.snt", "Doorslamarea", 0.0f, true);
+}
+//--------------------------------------------------------------------------------//
+void OnBegin(string &in asParent, string &in asChild, int alState)
+{
+        SetEntityActive("scare_1", true);
+		SetEntityActive("scare_two", true);
+		PlaySoundAtEntity("", "amb_idle_whimp.snt", "attic_sound_scare1", 0.0f, true);
+        PlaySoundAtEntity("", "insanity_baby_cry.snt", "attic_sound_scare1", 0.0f, true);
+        PlaySoundAtEntity("", "door_level_cistern_close.snt", "attic_sound_scare1", 0.0f, true);
+        PlaySoundAtEntity("", "general_thunder.snt", "attic_sound_scare1", 0.0f, true);
+        PlaySoundAtEntity("", "break_stairs.snt", "attic_sound_scare1", 0.0f, true);
+}
+//--------------------------------------------------------------------------------//
+void Scare(string &in asParent, string &in asChild, int alState)
+{
+		SetEntityActive("levelchangefade", true);
+		SetSwingDoorLocked("mansion_8", false, true);
+        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor1", false);    
+        CreateParticleSystemAtEntity("", "ps_door_damage_wood", "Partdoor1", false);
+        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor2", false);    
+        CreateParticleSystemAtEntity("", "ps_door_damage_wood", "Partdoor2", false);
+        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor3", false);    
+        CreateParticleSystemAtEntity("", "ps_door_damage_wood", "Partdoor3", false);
+        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor4", false);    
+        CreateParticleSystemAtEntity("", "ps_door_damage_wood", "Partdoor4", false);
+        PlaySoundAtEntity("", "lurker_hit_Wood", "Player", 0, false);
+        GiveSanityDamage(20, true);
+        AddPlayerBodyForce(-40000, 25000, 0, false);
+        FadePlayerRollTo(75, 3, 2);
+        StartPlayerLookAt("mansion_8", 2, 2, "");
+        SetPlayerCrouching(true);
+        AddTimer("", 2, "Timer1");
+        AddTimer("", 10, "Timer2");
+        GivePlayerDamage(10, "BloodSplat", false, false);
+        PlaySoundAtEntity("", "player_bodyfall", "Player", 0, false);
+        FadeRadialBlurTo(1, 0.5);
+}
+//--------------------------------------------------------------------------------//
+void Timer1(string &in asTimer)
+{
+		StartPlayerLookAt("mansion_8", 0.4, 0.4, "");
+		FadePlayerRollTo(-75, 3, 2);
+		AddTimer("", 2, "Timer3");
+		PlaySoundAtEntity("", "react_sigh", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void Timer3(string &in asTimer)
+{
+		PlaySoundAtEntity("", "react_sigh", "Player", 0, false);
+		StartPlayerLookAt("mansion_8", 0.4, 0.4, "");
+		FadePlayerRollTo(0, 0, 0);
+		AddTimer("", 2, "Timer5");
+		FadeRadialBlurTo(0, 1);
+}
+//--------------------------------------------------------------------------------//
+void Timer5(string &in asTimer)
+{
+		PlaySoundAtEntity("", "react_scare", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void Timer2(string &in asTimer)
+{
+		SetPlayerCrouching(false);
+		StopPlayerLookAt();
+}
+//--------------------------------------------------------------------------------//
+void Scare2(string &in asParent, string &in asChild, int alState)
+{
+        PlaySoundAtEntity("", "lurker_hit_Wood", "Player", 0, false);
+        GiveSanityDamage(40, true);
+        AddPlayerBodyForce(40000, 25000, 0, false);
+        FadePlayerRollTo(75, 3, 2);
+        SetPlayerCrouching(true);
+        AddTimer("", 2, "Timerone");
+        AddTimer("", 10, "Timertwo");
+        PlaySoundAtEntity("", "player_bodyfall", "Player", 0, false);
+        FadeRadialBlurTo(1, 0.5);
+}
+//--------------------------------------------------------------------------------//
+void Timerone(string &in asTimer)
+{
+		FadePlayerRollTo(-75, 3, 2);
+		AddTimer("", 2, "Timerthree");
+		PlaySoundAtEntity("", "react_sigh", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void Timerthree(string &in asTimer)
+{
+		PlaySoundAtEntity("", "react_sigh", "Player", 0, false);
+		FadePlayerRollTo(0, 0, 0);
+		AddTimer("", 2, "Timerfive");
+		FadeRadialBlurTo(0, 1);
+}
+//--------------------------------------------------------------------------------//
+void Timerfive(string &in asTimer)
+{
+		PlaySoundAtEntity("", "00_laugh.snt", "Player", 0, false);
+}
+//--------------------------------------------------------------------------------//
+void Timertwo(string &in asTimer)
+{
+		SetPlayerCrouching(false);
+}
+//--------------------------------------------------------------------------------//
+void Remove(string &in asParent, string &in asChild, int alState)
+{
+		RemoveItem("assistantkey");
+}
+//--------------------------------------------------------------------------------//
+void OnLeave ()
+{
+}
