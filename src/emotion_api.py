@@ -12,7 +12,7 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
 from multiprocessing import Pool
 
 # Global parameters, use your own key for subscription
-MY_SUBSCRIPTION_KEY = None
+MY_SUBSCRIPTION_KEY = 'dcc462c0b3704713a8e48e9ca074f247'
 
 HEADERS_URL = {
     'Content-Type': 'application/json',
@@ -167,8 +167,8 @@ if __name__ == "__main__":
     for i in range (no_of_pics):
         pic_name = filename + '_' + str(i) + '.png'
         take_picture(pic_name)
-        time.sleep(pic_interval)
         print('photo ' + str(i) + ' taken')
+        time.sleep(pic_interval)
 
         out_name = filename + '_' + str(i) + '.out'
         pool.apply_async(analyse_and_output, [pic_name, out_name])
