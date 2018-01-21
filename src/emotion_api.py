@@ -6,7 +6,7 @@
 import json
 import time
 import numpy as np
-import opencv as cv2
+import cv2
 import argparse
 import sys
 import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
@@ -181,14 +181,6 @@ def emotion_api(args):
 
     pool.close()
     pool.join()
-    
-# emotion_simple(fileName)
-def emotion_simple(args):
-	fileName = args[1]
-	picName = fileName + '.png'
-	outName = fileName + '.out'
-	take_picture(picName)
-	analyze_and_output(picName,outName)
 
 if __name__ == "__main__":
     emotion_api(sys.argv)
