@@ -1,8 +1,8 @@
 # import emotion_api
 import analyze
 import time
-import os
 import getpass
+from sys import platform
 from operator import itemgetter
 from collections import OrderedDict
 
@@ -19,12 +19,16 @@ if __name__ == '__main__':
     # checks if Amnesia has opened Map01
     username = getpass.getuser()
     print(username)
-    #
-    # # if os.name == "mac":
-    # logfileLocation = ("/Users/" + username + "/Library/Application Support/Frictional Games/Amnesia/Main/hpl.log")
-    # # elif os.name == "nt":
-    # #     # find logfileLocation on Windows
-    # #     logfileLocation = ("")
+
+    if platform == "linux" or platform == "linux2":
+    # linux
+        logfileLocation = ("/home/" + username + "/.frictionalgames/Amnesia/Main/hpl.log")
+    elif platform == "darwin":
+    # OS X
+        logfileLocation = ("/Users/" + username + "/Library/Application Support/Frictional Games/Amnesia/Main/hpl.log")
+    # elif platform == "win32" or platform == "cygwin":
+    # Windows...
+
     # logfile = open(logfileLocation,"r")
     # loglines = follow(logfile)
     # for line in loglines:
@@ -68,9 +72,15 @@ if __name__ == '__main__':
         rank += 1
     getFearLevels += "}"
     print(getFearLevels)
-    # if os.name == "mac":
-    responsiveMapLocation = "/Users/" + username + "/Library/Application Support/Steam/steamapps/common/Amnesia The Dark Descent/custom_stories/GLAM/maps/map03_ch1.hps"
-    # elif os.name == "nt":
-    #   responsiveMapLocation = ("")
+
+    if platform == "linux" or platform == "linux2":
+    # linux
+        responsiveMapLocation = "/home/" + username + "/.local/share/Steam/steamapps/common/Amnesia The Dark Descent/custom_stories/GLAM The Horror Game/maps/map03_ch1.hps"
+    elif platform == "darwin":
+    # OS X
+        responsiveMapLocation = "/Users/" + username + "/Library/Application Support/Steam/steamapps/common/Amnesia The Dark Descent/custom_stories/GLAM/maps/map03_ch1.hps"
+    # elif platform == "win32" or platform == "cygwin":
+    # Windows...
+
     with open(responsiveMapLocation, "a") as responsiveMap:
         responsiveMap.write(getFearLevels)
