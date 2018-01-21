@@ -31,7 +31,7 @@ void FallOver(string &in asParent , string &in asChild , int alState)
 void Fadeout(string &in asTimer)
 {
 		FadeOut(3.0f);
-		ChangeMap("map04_ch1.map", "PlayerStartArea_2", "", "");
+		SetMessage("Endcredits", "Credittext", 0);
 }
 //--------------------------------------------------------------------------------//
 void beginStory(string &in asTimer)
@@ -65,13 +65,13 @@ void Scare(string &in asParent, string &in asChild, int alState)
 {
 		SetEntityActive("levelchangefade", true);
 		SetSwingDoorLocked("mansion_8", false, true);
-        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor1", false);    
+        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor1", false);
         CreateParticleSystemAtEntity("", "ps_door_damage_wood", "Partdoor1", false);
-        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor2", false);    
+        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor2", false);
         CreateParticleSystemAtEntity("", "ps_door_damage_wood", "Partdoor2", false);
-        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor3", false);    
+        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor3", false);
         CreateParticleSystemAtEntity("", "ps_door_damage_wood", "Partdoor3", false);
-        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor4", false);    
+        CreateParticleSystemAtEntity("", "ps_dust_impact", "Partdoor4", false);
         CreateParticleSystemAtEntity("", "ps_door_damage_wood", "Partdoor4", false);
         PlaySoundAtEntity("", "lurker_hit_Wood", "Player", 0, false);
         GiveSanityDamage(20, true);

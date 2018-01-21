@@ -1,8 +1,8 @@
-#include "cpp_python_wrapper.hpp"
-#include <string>
-#include <vector>
-
-using namespace std;
+// #include "cpp_python_wrapper.hpp"
+// #include <string>
+// #include <vector>
+//
+// using namespace std;
 
 // Define methods of inducing fear
 enum Scares {
@@ -113,9 +113,9 @@ void OnLeave ()
   // calculate weights
 
   // save weights to file
-  file f;
-  f.open("weights.txt", "w");
-  string temp = string(itoa(jumpscare_weight)) + ";" + string(itoa(monsters_weight)) + ";" + string(itoa(suspense_weight)) + ";" + string(itoa(insanity_weight)) + ";";
-  f.WriteString(temp);
-  f.close();
-}
+//   file f;
+//   f.open("weights.txt", "w");
+//   string temp = string(itoa(jumpscare_weight)) + ";" + string(itoa(monsters_weight)) + ";" + string(itoa(suspense_weight)) + ";" + string(itoa(insanity_weight)) + ";";
+//   f.WriteString(temp);
+//   f.close();
+// }
