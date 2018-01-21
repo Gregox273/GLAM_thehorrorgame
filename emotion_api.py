@@ -181,6 +181,14 @@ def emotion_api(args):
 
     pool.close()
     pool.join()
+    
+# emotion_simple(fileName)
+def emotion_simple(args):
+	fileName = args[1]
+	picName = fileName + '.png'
+	outName = fileName + '.out'
+	take_picture(picName)
+	analyze_and_output(picName,outName)
 
 if __name__ == "__main__":
     emotion_api(sys.argv)

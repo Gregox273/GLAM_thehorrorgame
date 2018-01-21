@@ -1,25 +1,6 @@
-// #include "cpp_python_wrapper.hpp"
-// #include <string>
-// #include <vector>
-//
-// using namespace std;
-
-// Define methods of inducing fear
-enum Scares {
-    jumpscare,
-    monsters,
-    suspense,
-    insanity
-}
-
-// Define weighting for each method, say 0 to 100
-SetGlobalVarInt("jumpscare_weight",50);
-SetGlobalVarInt("monsters_weight",50);
-SetGlobalVarInt("suspense_weight",50);
-SetGlobalVarInt("insanity_weight",50);
-
 void OnEnter ()
 {
+	Print("Trigger: Entering Map 1 ");
     AddUseItemCallback("", "keyone", "door1", "UsedKeyOnDoor", true);
     AddUseItemCallback("", "key_attic", "stairwell", "UsedKeyOnDoor2", true);
     SetEntityCallbackFunc("key_attic", "Func");
@@ -39,7 +20,7 @@ void despawn(string &in asParent, string &in asChild, int alState){
     FadeEnemyToSmoke("servant_grunt_3", true);
 }
 //--------------------------------------------------------------------------------//
-void wakeup(string &in asEntity, string &in type){
+void wakeup(string &in asEntity){
     SetEnemyDisableTriggers("servant_brute_1", false);
 }
 
@@ -68,6 +49,10 @@ void UsedKeyOnDoor2(string &in asItem, string &in asEntity)
     SetLevelDoorLocked("stairwell", false);
     SetLevelDoorLockedSound("stairwell", "door_level_wood_locked.snt");
     RemoveItem("key_attic");
+    StartRandomInsanityEvent();
+		Print("Trigger: Leaving Map 1 ");
+		SetPlayerActive(false);
+  	AddTimer("insanity_2", 5, "stopInsanity");
 }
 //--------------------------------------------------------------------------------//
 void Func(string &in asEntity, string &in type)
@@ -77,7 +62,7 @@ void Func(string &in asEntity, string &in type)
         PlaySoundAtEntity("", "16_bridge_stuck.snt", "Player", 0, false);
         PlaySoundAtEntity("", "react_pant.snt", "Player", 0, false);
         StartPlayerLookAt("Player", 3.0f, 3.0f, "");
-        AddTimer("atticscare", 1, "OnPickup");
+        // AddTimer("atticscare", 1, "OnPickup");
         SetMessage("Messages", "scare", 0);
     }
 }
@@ -87,7 +72,7 @@ void lightsout(string &in asEntity, string &in type)
     if(type == "OnPickup")
     {
         SetLampLit("candlestick_floor_3",false,true);
-        SetLampLit("chandelier_nice_4",false,true);
+        SetLampLit("chandelier_nixce_4",false,true);
         SetLampLit("chandelier_nice_3",false,true);
         SetLampLit("candlestick_floor_2",false,true);
         SetLampLit("candle_floor_small_2",false,true);
@@ -106,16 +91,15 @@ void lightsout(string &in asEntity, string &in type)
 void stopInsanity(string &in asTimer)
 {
 	StopCurrentInsanityEvent();
+	SetPlayerActive(true);
 }
 //--------------------------------------------------------------------------------//
 void OnLeave ()
 {
-  // calculate weights
-
-  // save weights to file
-//   file f;
-//   f.open("weights.txt", "w");
-//   string temp = string(itoa(jumpscare_weight)) + ";" + string(itoa(monsters_weight)) + ";" + string(itoa(suspense_weight)) + ";" + string(itoa(insanity_weight)) + ";";
-//   f.WriteString(temp);
-//   f.close();
-// }
+	AddTimer("fade_1", 10, "fadeToBlack");
+}
+//--------------------------------------------------------------------------------//
+void fadeToBlack(string &in asTimer)
+{
+	FadeOut(10.0f);
+}

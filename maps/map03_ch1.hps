@@ -1,60 +1,63 @@
 void OnStart()
 {
-		// Hardcode scare weights
-		SetGlobalVarInt("jumpscare_weight",60);
-		SetGlobalVarInt("monsters_weight",60);
-		SetGlobalVarInt("suspense_weight",50);
-		SetGlobalVarInt("insanity_weight",50);
+	Print("Trigger: Entering Map 3");
+	// Hardcode scare weights
+	// SetGlobalVarInt("jumpscare",60);
+	// SetGlobalVarInt("monsters",60);
+	// SetGlobalVarInt("suspense",50);
+	// SetGlobalVarInt("insanity",50);
 
-		AddUseItemCallback("", "mapsixkey", "demon_transfer1", "UsedKeyOnDoor", true);
-        AddEntityCollideCallback("Player", "attic_sound_scare1", "OnBegin", true, 1);
-        AddEntityCollideCallback("Player", "scare_1", "Scare", true, 1);
-		AddEntityCollideCallback("Player", "Doorslamarea", "DoorScare", true, 1);
-		AddEntityCollideCallback("Player", "scare_two", "Scare2", true, 1);
-		AddEntityCollideCallback("Player", "levelchangefade", "FallOver", true, 1);
-		AddEntityCollideCallback("Player", "key_remove", "Remove", true, 1);
+	getFearLevels();
 
-		// Dependent on scare weights
-		if(GetGlobalVarInt("jumpscare_weight") > 50){
-			AddEntityCollideCallback("Player", "ambush", "Ambush_func", true, 1);
-		}
+	AddUseItemCallback("", "mapsixkey", "demon_transfer1", "UsedKeyOnDoor", true);
+	AddEntityCollideCallback("Player", "attic_sound_scare1", "OnBegin", true, 1);
+	AddEntityCollideCallback("Player", "scare_1", "Scare", true, 1);
+	AddEntityCollideCallback("Player", "Doorslamarea", "DoorScare", true, 1);
+	AddEntityCollideCallback("Player", "scare_two", "Scare2", true, 1);
+	AddEntityCollideCallback("Player", "levelchangefade", "FallOver", true, 1);
+	AddEntityCollideCallback("Player", "key_remove", "Remove", true, 1);
 
-		if(GetGlobalVarInt("monsters_weight") > 50){
-			SetEntityActive("servant_grunt_1", true);
-			set_patrol("servant_grunt_1");
-		}
-		if(GetGlobalVarInt("monsters_weight") > 70) {
-			SetEntityActive("servant_grunt_2", true);
-			set_patrol("servant_grunt_2");
-		}
+	// Dependent on scare weights
+	if(GetGlobalVarInt("jumpscare") > 50){
+		AddEntityCollideCallback("Player", "ambush", "Ambush_func", true, 1);
+	}
 
-		if(GetGlobalVarInt("suspense_weight") > 50){
-			// Turn off some lights:
-			SetLampLit("chandelier_large_2",false,true);
-			SetLampLit("chandelier_large_3",false,true);
-			SetLampLit("chandelier_large_4",false,true);
-			SetLampLit("candle_floor_small_2",false,true);
-			SetLampLit("candlestick_wall_37",false,true);
-			SetLampLit("candlestick_wall_39",false,true);
-			SetLampLit("candlestick_wall_40",false,true);
-			SetLampLit("candlestick_wall_41",false,true);
-			SetLampLit("candlestick_wall_16",false,true);
-			SetLampLit("candlestick_wall_19",false,true);
-			SetLampLit("candle_floor_1",false,true);
-			SetLampLit("candlestick_wall_32",false,true);
-			SetLampLit("candlestick_wall_34",false,true);
-			SetLampLit("candlestick_wall_33",false,true);
-			SetLampLit("candlestick_wall_35",false,true);
-			SetLampLit("candlestick_wall_31",false,true);
-			SetLampLit("candlestick_wall_9",false,true);
-			SetLampLit("candlestick_wall_15",false,true);
-			SetLampLit("candlestick_wall_26",false,true);
-			SetLampLit("candlestick_wall_10",false,true);
-			SetLampLit("candlestick_wall_11",false,true);
-			SetLampLit("candlestick_wall_17",false,true);
-			SetLampLit("candlestick_wall_18",false,true);
-			SetLampLit("hanging_lantern_ceiling_1",false,true);
-		}
+	if(GetGlobalVarInt("monsters") > 50){
+		SetEntityActive("servant_grunt_1", true);
+		set_patrol("servant_grunt_1");
+	}
+	if(GetGlobalVarInt("monsters") > 70) {
+		SetEntityActive("servant_grunt_2", true);
+		set_patrol("servant_grunt_2");
+	}
+
+	if(GetGlobalVarInt("suspense") > 50){
+		// Turn off some lights:
+		SetLampLit("chandelier_large_2",false,true);
+		SetLampLit("chandelier_large_3",false,true);
+		SetLampLit("chandelier_large_4",false,true);
+		SetLampLit("candle_floor_small_2",false,true);
+		SetLampLit("candlestick_wall_37",false,true);
+		SetLampLit("candlestick_wall_39",false,true);
+		SetLampLit("candlestick_wall_40",false,true);
+		SetLampLit("candlestick_wall_41",false,true);
+		SetLampLit("candlestick_wall_16",false,true);
+		SetLampLit("candlestick_wall_19",false,true);
+		SetLampLit("candle_floor_1",false,true);
+		SetLampLit("candlestick_wall_32",false,true);
+		SetLampLit("candlestick_wall_34",false,true);
+		SetLampLit("candlestick_wall_33",false,true);
+		SetLampLit("candlestick_wall_35",false,true);
+		SetLampLit("candlestick_wall_31",false,true);
+		SetLampLit("candlestick_wall_9",false,true);
+		SetLampLit("candlestick_wall_15",false,true);
+		SetLampLit("candlestick_wall_26",false,true);
+		SetLampLit("candlestick_wall_10",false,true);
+		SetLampLit("candlestick_wall_11",false,true);
+		SetLampLit("candlestick_wall_17",false,true);
+		SetLampLit("candlestick_wall_18",false,true);
+		SetLampLit("hanging_lantern_ceiling_1",false,true);
+	}
 }
 //--------------------------------------------------------------------------------//
 void set_patrol(string who)
@@ -206,11 +209,11 @@ void Timer2(string &in asTimer)
 // 		//AddTimer
 // }
 //
-// void DealWithInsanity(int insanity_weight)
+// void DealWithInsanity(int insanity)
 // {
-// 		// assume insanity_weight lies from 0 to 100
-// 		float insanity_periodicity = 500/(insanity_weight+1);
-// 		float insanity_duration    = 100/(insanity_weight+1);
+// 		// assume insanity lies from 0 to 100
+// 		float insanity_periodicity = 500/(insanity+1);
+// 		float insanity_duration    = 100/(insanity+1);
 // 		PlayInsanity(insanity_duration, insanity_periodicity);
 // }
 //--------------------------------------------------------------------------------//

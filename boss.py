@@ -1,3 +1,5 @@
+# import emotion_api
+import analyze
 import time
 import os
 import getpass
@@ -9,40 +11,59 @@ def follow(thefile):
     while True:
         line = thefile.readline()
         if not line:
-            time.sleep(0.1)
+            time.sleep(0.001)
             continue
         yield line
 
 if __name__ == '__main__':
-
     # checks if Amnesia has opened Map01
     username = getpass.getuser()
     print(username)
-    # if os.name == "mac":
-    logfileLocation = ("/Users/" + username + "/Library/Application Support/Frictional Games/Amnesia/Main/hpl.log")
-    # elif os.name == "nt":
-    #     # find logfileLocation on Windows
-    #     logfileLocation = ("")
-    logfile = open(logfileLocation,"r")
-    loglines = follow(logfile)
-    for line in loglines:
-        if "Loading map 'map01_ch1.map" in line:
-            print("Loading map 'map01_ch1.map")
-            break
-    logfile.close()
+    #
+    # # if os.name == "mac":
+    # logfileLocation = ("/Users/" + username + "/Library/Application Support/Frictional Games/Amnesia/Main/hpl.log")
+    # # elif os.name == "nt":
+    # #     # find logfileLocation on Windows
+    # #     logfileLocation = ("")
+    # logfile = open(logfileLocation,"r")
+    # loglines = follow(logfile)
+    # for line in loglines:
+    #     print("reading 1")
+    #     if " -------- Loading map 'map01_ch1.map' ---------" in line:
+    #         print("Recognized: Entering Map 1")
+    #         break
+    #     elif " -------- Loading complete ---------" in line:
+    #         print("Recognized: Loaded Map 1")
+    #         break
+    # logfile.close()
+    # # records images until map03 begins to load
+    # #     counter = 1
+    # logfile = open(logfileLocation,"r")
+    # loglines = follow(logfile)
+    # for line in loglines:
+    #     print("reading 2")
+    #     if "Trigger: Leaving Map 1" in line:
+    #         print("Recognized: Leaving Map 1")
+    #         break
+    #         #     	fileName = "p_" + counter
+    #         #     	emotion_simple(fileName)
+    #         #     	time.sleep(0.5)
+    #         #     	counter += 1
+    # logfile.close()
 
-    # begins recording images
-
-    # gets intervals of biggest jumps in fear from images (1-jumpscare, 2-suspense, 3-insanity, 4-monsters)
-    fearLevels = {'jumpscare':0.39, 'suspense':0.69, 'insanity':0.42, 'monsters':0.11} # but this would actually be the intervals dictionary from Anindya
-    fearScale = OrderedDict(sorted(fearLevels.items(), key=itemgetter(1), reverse=True)) # sorts scares by most terrifying to least
-    print(fearScale)
+    # gets jumps in fear from each scare
+    # fearNums = analyze("p_", counter)
+    fearNums = analyze.genFearScores("p", 4)
+    fearNums = [int(x * 100) for x in fearNums]
+    fearLevels = {'jumpscare':fearNums[0], 'suspense':fearNums[1], 'insanity':fearNums[2], 'monsters':fearNums[3]}
+    # fearScale = OrderedDict(sorted(fearLevels.items(), key=itemgetter(1), reverse=True)) # sorts scares by most terrifying to least
+    # print(fearScale)
 
     # appends void getFearLevels() to map03_ch1.hps
     getFearLevels = "void getFearLevels(){"
     rank = 1
     # creates void getFearLevels()
-    for scare, fearLevel in fearScale.items():
+    for scare, fearLevel in fearLevels.items():
         getFearLevels = getFearLevels + "SetGlobalVarInt(\"" + scare + "\"," + str(rank) + ");"
         rank += 1
     getFearLevels += "}"
