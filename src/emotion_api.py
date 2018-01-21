@@ -1,6 +1,7 @@
 # Basic emotion API
 # Can analyse a picture given its url and print how 'scared'
 # each face is from left to right
+# See how to use this in the documentation of 'main'
 
 import json
 import time
@@ -153,14 +154,19 @@ def analyse_and_output(pic_name, out_name):
     data = analyse_picture(pic_name, is_url = False)
     output_scared(data[0], out_name)
 
-if __name__ == "__main__":
+# call this like
+# 'python emotion_api.py <name> <num_of_pics> <pic_interval>'
+# where
+# <name> is the number of the files to be given to the pictures
+# <num_of_pics> is the number of pictures to be taken
+# <pic_interval> is the interval in seconds between pictures
+def emotion_api(args):
+    if len(args) < 4:
+        raise Exception("No filename/num of pics/camera tmime interval specified")
 
-    if len(sys.argv) < 4:
-        raise Exception("No filename specified")
-
-    filename = sys.argv[1]
-    no_of_pics = int(sys.argv[2])
-    pic_interval = int(sys.argv[3])
+    filename = args[1]
+    no_of_pics = int(args[2])
+    pic_interval = float(args[3])
 
     pool = Pool()
     #take no of photos with desired time intervals
@@ -176,5 +182,5 @@ if __name__ == "__main__":
     pool.close()
     pool.join()
 
-
-
+if __name__ == "__main__":
+    emotion_api(sys.argv)
