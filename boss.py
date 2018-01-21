@@ -1,3 +1,5 @@
+# import emotion_api
+import analyze
 import time
 import os
 import getpass
@@ -26,15 +28,26 @@ if __name__ == '__main__':
     logfile = open(logfileLocation,"r")
     loglines = follow(logfile)
     for line in loglines:
-        if "Loading map 'map01_ch1.map" in line:
-            print("Loading map 'map01_ch1.map")
+        if "Loading map 'map01_ch1.map'" in line:
+            print("Loading map 'map01_ch1.map'")
             break
+
+    # records images until map03 begins to load
+    counter = 1
+    for line in loglines:
+    	if "Loading map 'map03_ch1.map'" in line:
+    		print("Loading map 'map03_ch1.map'")
+    		break
+    	fileName = "p_" + counter
+#     	emotion_simple(fileName)
+    	time.sleep(0.5)
+    	counter += 1
     logfile.close()
-
-    # begins recording images
-
-    # gets intervals of biggest jumps in fear from images (1-jumpscare, 2-suspense, 3-insanity, 4-monsters)
-    fearLevels = {'jumpscare':0.39, 'suspense':0.69, 'insanity':0.42, 'monsters':0.11} # but this would actually be the intervals dictionary from Anindya
+    
+    # gets jumps in fear from each scare
+    fearNums = analyze("p_", counter)
+    fearNums = [int(x * 100) for x in fearNums]
+    fearLevels = {'jumpscare':fearNums[0], 'suspense':fearNums[1], 'insanity':fearNums[2], 'monsters':fearNums[3]}
     fearScale = OrderedDict(sorted(fearLevels.items(), key=itemgetter(1), reverse=True)) # sorts scares by most terrifying to least
     print(fearScale)
 

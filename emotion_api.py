@@ -6,7 +6,7 @@
 import json
 import time
 import numpy as np
-import opencv as cv2
+import cv2
 import argparse
 import sys
 import http.client, urllib.request, urllib.parse, urllib.error, base64, sys
