@@ -1,9 +1,9 @@
 void OnStart()
 {
 		// Hardcode scare weights
-		SetGlobalVarInt("jumpscare_weight",50);
-		SetGlobalVarInt("monsters_weight",50);
-		SetGlobalVarInt("suspense_weight",60);
+		SetGlobalVarInt("jumpscare_weight",60);
+		SetGlobalVarInt("monsters_weight",60);
+		SetGlobalVarInt("suspense_weight",50);
 		SetGlobalVarInt("insanity_weight",50);
 
 		AddUseItemCallback("", "mapsixkey", "demon_transfer1", "UsedKeyOnDoor", true);
@@ -19,8 +19,14 @@ void OnStart()
 			AddEntityCollideCallback("Player", "ambush", "Ambush_func", true, 1);
 		}
 
-		if(GetGlobalVarInt("monsters_weight") > 50) SetEntityActive("servant_grunt_1", true);
-		if(GetGlobalVarInt("monsters_weight") > 70) SetEntityActive("servant_grunt_2", true);
+		if(GetGlobalVarInt("monsters_weight") > 50){
+			SetEntityActive("servant_grunt_1", true);
+			set_patrol("servant_grunt_1");
+		}
+		if(GetGlobalVarInt("monsters_weight") > 70) {
+			SetEntityActive("servant_grunt_2", true);
+			set_patrol("servant_grunt_2");
+		}
 
 		if(GetGlobalVarInt("suspense_weight") > 50){
 			// Turn off some lights:
@@ -49,7 +55,30 @@ void OnStart()
 			SetLampLit("candlestick_wall_18",false,true);
 			SetLampLit("hanging_lantern_ceiling_1",false,true);
 		}
-
+}
+//--------------------------------------------------------------------------------//
+void set_patrol(string who)
+{
+	AddEnemyPatrolNode(who, "PathNodeArea_1",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_2",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_3",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_4",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_5",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_6",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_7",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_8",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_9",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_10",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_11",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_12",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_13",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_14",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_15",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_16",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_17",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_18",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_19",0.01f,"");
+	AddEnemyPatrolNode(who, "PathNodeArea_20",0.01f,"");
 }
 //--------------------------------------------------------------------------------//
 void Ambush_func(string &in asParent, string &in asChild, int alState)
@@ -162,6 +191,28 @@ void Timer2(string &in asTimer)
 		SetPlayerCrouching(false);
 		StopPlayerLookAt();
 }
+
+
+// void PlayInsanity(string& param)
+// {
+//
+// 		StartRandomInsanityEvent();
+// 		AddTimer("" + periodicity, duration, "PauseInsanity");
+// }
+//
+// void PauseInsanity(float duration, float periodicity)
+// {
+// 		StopCurrentInsanityEvent();
+// 		//AddTimer
+// }
+//
+// void DealWithInsanity(int insanity_weight)
+// {
+// 		// assume insanity_weight lies from 0 to 100
+// 		float insanity_periodicity = 500/(insanity_weight+1);
+// 		float insanity_duration    = 100/(insanity_weight+1);
+// 		PlayInsanity(insanity_duration, insanity_periodicity);
+// }
 //--------------------------------------------------------------------------------//
 void Scare2(string &in asParent, string &in asChild, int alState)
 {
